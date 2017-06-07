@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
-import { Link } from 'react-router-dom';
 import { StoreState } from '../types';
+import { RouteComponentProps } from 'react-router-dom';
 
 import PostsList from '../components/posts-list';
 
-export interface Props {
+export interface Props extends RouteComponentProps<{}> {
   posts: object;
   fetchPosts(): void;
 }
@@ -19,13 +19,8 @@ class PostsIndex extends React.Component<Props, object>  {
   render() {
     return (
       <div>
-        <nav className="post-nav">
-          <Link className="post__new btn btn-secondary" to="/">
-            New Posts
-          </Link>
-          <h1> All Posts </h1>
+          <h1> Recent Posts </h1>
           <PostsList posts={this.props.posts} />
-        </nav>
       </div>
     );
   }

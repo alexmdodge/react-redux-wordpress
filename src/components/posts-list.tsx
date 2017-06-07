@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import * as lodash from 'lodash';
+import { Link } from 'react-router-dom';
 
 export interface Props {
   posts: object;

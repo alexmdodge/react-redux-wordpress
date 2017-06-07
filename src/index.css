@@ -3,3 +3,40 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.post__new {
+  margin: 10px 0;
+}
+
+.post__header {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.post-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.post-item__link {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+}
+
+.post-item__link:active, .post-item__link:hover, .post-item__link:visited {
+  color: #333;
+  text-decoration: none;
+}
+
+.list-group-item:hover {
+  background-color: rgba(0,0,0,0.05);
+}

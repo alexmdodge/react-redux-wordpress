@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchPost } from '../../actions';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { StoreState } from '../../types';
 
 import SafeHtml from '../../components/safe-html';
 
 export interface Props extends RouteComponentProps<{}> {
   post: object;
-  fetchPost(id: number): void;
+  fetchPost(slug: string): void;
 }
 
 export interface Params {
@@ -30,8 +30,8 @@ export interface Post {
 
 class PostSingle extends React.Component<Props, object> {
   componentDidMount() {
-    const { id } = this.props.match.params as Params;
-    this.props.fetchPost(id);
+    const { slug } = this.props.match.params as Params;
+    this.props.fetchPost(slug);
   }
 
   render() {
@@ -44,9 +44,6 @@ class PostSingle extends React.Component<Props, object> {
 
     return (
       <div className="post-single">
-        <Link to="/" className="btn btn-secondary">
-          Home
-        </Link>
         <div className="post-single__title jumbotron" style={{ marginTop: '30px'}}>
           <h1>
             {post.title.rendered}
@@ -64,7 +61,7 @@ class PostSingle extends React.Component<Props, object> {
 }
 
 function mapStateToProps({ posts }: StoreState, ownProps: any) {
-  return { post: posts[ownProps.match.params.id] };
+  return { post: posts[ownProps.match.params.slug] };
 }
 
 export default connect(mapStateToProps, { fetchPost })(PostSingle);

@@ -13,6 +13,8 @@
     "@types/react-router-dom": "^4.0.4",
     "@types/redux-form": "^6.6.2",
     "@types/redux-promise": "^0.5.24",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/sanitize-html": "^1.13.31",
     "axios": "^0.16.2",
     "immutability-helper": "^2.2.2",
     "lodash": "^4.17.4",
@@ -24,6 +26,8 @@
     "redux": "^3.6.0",
     "redux-form": "^6.7.0",
     "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
+    "sanitize-html": "^1.14.1",
     "typescript": "2.2.2"
   },
   "devDependencies": {

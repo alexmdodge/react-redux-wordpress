@@ -1,17 +1,7 @@
-import axios, { AxiosPromise } from 'axios';
+import axios from 'axios';
 import * as constants from '../constants';
 
-export interface FetchPosts {
-  type: constants.FETCH_POSTS;
-  payload: AxiosPromise;
-}
-
-export interface FetchPost {
-  type: constants.FETCH_POST;
-  payload: AxiosPromise;
-}
-
-export function fetchPosts(): FetchPosts {
+export function fetchPosts() {
   const request = axios.get(`${constants.ROOT_URL}/posts`);
 
   return {
@@ -20,11 +10,39 @@ export function fetchPosts(): FetchPosts {
   };
 }
 
-export function fetchPost(id: number): FetchPost {
-  const request = axios.get(`${constants.ROOT_URL}/posts/${id}`);
+export function fetchPost(slug: string) {
+  const request = axios.get(`${constants.ROOT_URL}/posts?slug=${slug}`);
+  return (dispatch: any) => {
+    return request
+      .then(post => {
+        dispatch({
+          type: constants.FETCH_POST,
+          payload: post,
+        });
 
-  return {
-    type: constants.FETCH_POST,
-    payload: request, 
+        /* Dispatch Second Request */
+        const data = post.data[0];
+        return getMedia(data.featured_media)
+          .then((media: object) => {
+            dispatch({
+              type: constants.FETCH_MEDIA,
+              payload: {
+                id: data.id,
+                media
+              },
+            });
+          })
+          .then((error: object) => {
+            dispatch({
+              type: constants.FETCH_MEDIA_ERROR,
+              payload: error,
+            });
+          });
+      });
   };
+}
+
+/* Support Functions for Nesting */
+function getMedia(id: number): any {
+  return axios.get(`${constants.ROOT_URL}/media/${id}`);
 }

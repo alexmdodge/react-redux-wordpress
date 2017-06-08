@@ -1,7 +1,7 @@
 import * as constants from '../constants';
 import * as lodash from 'lodash';
 
-export interface PostData extends lodash.List<{}> {
+export interface MediaData extends lodash.List<{}> {
   id: number;
   slug: string;
 }
@@ -9,20 +9,15 @@ export interface PostData extends lodash.List<{}> {
 export interface PostsReturnAction {
   type: string;
   payload: {
-    data: Array<PostData>;
+    data: MediaData;
   };
 }
 
 export default function(state: object = {}, action: PostsReturnAction) {
   switch (action.type) {
-    case constants.FETCH_POSTS:
-      return lodash.mapKeys(action.payload.data, 'slug');
-    case constants.FETCH_POST:
+    case constants.FETCH_MEDIA:
       console.log(action);
-      return {
-        ...state,
-        [action.payload.data[0].slug]: action.payload.data[0],
-      };
+      return lodash.mapKeys(action.payload.data, 'slug');
     default:
       return state;
   }

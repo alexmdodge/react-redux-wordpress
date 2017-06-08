@@ -14,7 +14,7 @@ class App extends React.Component<{}, null> {
           <div>
             <Header />
             <Switch>
-              <Route path="/blog/:id" component={PostSingle} />
+              <Route path="/blog/posts/:slug" component={PostSingle} />
               <Route path="/" component={Home} />
             </Switch>
           </div>

@@ -1,17 +1,18 @@
 import * as React from 'react';
 import * as lodash from 'lodash';
 import { Link } from 'react-router-dom';
+import './recent-posts.css';
 
 export interface Props {
   posts: object;
 }
 
-export default class PostsList extends React.Component<Props, object> {
+export default class RecentPosts extends React.Component<Props, object> {
   renderPostsList(post: any) {
     return (
       <li className="list-group-item" key={post.id}>
         <Link 
-          to={`/posts/${post.id}`}
+          to={`/blog/${post.id}`}
           className="post-item__link"
         >
           <h3 className="post-title">
@@ -30,7 +31,10 @@ export default class PostsList extends React.Component<Props, object> {
 
   render() {
     return (
-      <div>
+      <div className="recent-posts">
+        <h1 className="recent-posts__title">
+          Recent Posts
+        </h1>
         <ul className="posts-list list-group">
           {lodash.map(this.props.posts, this.renderPostsList)}
         </ul>

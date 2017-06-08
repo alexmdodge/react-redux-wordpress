@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './containers/home';
-import Header from './components/header';
+import Header from './components/header/header';
+import PostSingle from './containers/post-single/post-single';
 import './App.css';
 
 class App extends React.Component<{}, null> {
@@ -13,6 +14,7 @@ class App extends React.Component<{}, null> {
           <div>
             <Header />
             <Switch>
+              <Route path="/blog/:id" component={PostSingle} />
               <Route path="/" component={Home} />
             </Switch>
           </div>

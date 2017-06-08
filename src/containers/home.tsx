@@ -4,7 +4,7 @@ import { fetchPosts } from '../actions';
 import { StoreState } from '../types';
 import { RouteComponentProps } from 'react-router-dom';
 
-import PostsList from '../components/posts-list';
+import RecentPosts from '../components/recent-posts/recent-posts';
 
 export interface Props extends RouteComponentProps<{}> {
   posts: object;
@@ -19,8 +19,7 @@ class PostsIndex extends React.Component<Props, object>  {
   render() {
     return (
       <div>
-          <h1> Recent Posts </h1>
-          <PostsList posts={this.props.posts} />
+        <RecentPosts posts={this.props.posts} />
       </div>
     );
   }

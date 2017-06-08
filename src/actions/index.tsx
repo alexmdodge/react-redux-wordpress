@@ -6,11 +6,13 @@ export interface FetchPosts {
   payload: AxiosPromise;
 }
 
-const API_KEY = '?key=adodgetest321';
-const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
+export interface FetchPost {
+  type: constants.FETCH_POST;
+  payload: AxiosPromise;
+}
 
 export function fetchPosts(): FetchPosts {
-  const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
+  const request = axios.get(`${constants.ROOT_URL}/posts`);
 
   return {
     type: constants.FETCH_POSTS,
@@ -18,33 +20,11 @@ export function fetchPosts(): FetchPosts {
   };
 }
 
-// export function fetchPost(id) {
-//   const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+export function fetchPost(id: number): FetchPost {
+  const request = axios.get(`${constants.ROOT_URL}/posts/${id}`);
 
-//   return {
-//     type: FETCH_POST,
-//     payload: request, 
-//   }
-// }
-
-// export function createPost(post, callback) {
-//   const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, post)
-//     .then(() => callback());
-
-//   return {
-//     type: CREATE_POST,
-//     payload: request, 
-//   }
-// }
-
-// export const DELETE_POST = 'DELETE_POST';
-
-// export function deletePost(id, callback) {
-//   const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
-//     .then(() => callback());
-
-//   return {
-//     type: DELETE_POST,
-//     payload: id,
-//   }
-// }
+  return {
+    type: constants.FETCH_POST,
+    payload: request, 
+  };
+}

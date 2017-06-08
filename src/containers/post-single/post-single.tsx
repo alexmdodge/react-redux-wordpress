@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { fetchPost } from '../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { StoreState } from '../../types';
+import { Jumbotron } from 'reactstrap';
 
 import SafeHtml from '../../components/safe-html';
+import './post-single.css';
 
 export interface Props extends RouteComponentProps<{}> {
   post: Post;
@@ -30,7 +32,7 @@ export interface Post {
 }
 
 export interface PostMedia {
-  url: string;
+  source_url: string;
 }
 
 class PostSingle extends React.Component<Props, object> {
@@ -41,19 +43,22 @@ class PostSingle extends React.Component<Props, object> {
 
   render() {
     const { post, postMedia } = this.props;
-    console.log(post, postMedia);
 
-    if (!post && !postMedia) {
+    if (!post || !postMedia) {
       return <div> Loading . . . </div>;
     }
 
     return (
       <div className="post-single">
-        <div className="post-single__title jumbotron" style={{ marginTop: '30px'}}>
+        <Jumbotron className="post-single__title">
           <h1>
             {post.title.rendered}
           </h1>
-        </div>
+          <img 
+            src={postMedia.source_url}
+            className="rounded post-single__thumbnail"
+          />
+        </Jumbotron>
         <div className="post-single__categories">
           Date: {moment(post.date).format('LL')}
         </div>

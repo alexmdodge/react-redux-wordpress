@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button } from 'reactstrap';
 import './header.css';
 
 const Header = () => (
   <nav className="post-nav">
-    <Link className="post__new btn btn-default" to="/">
+    <Link className="post__new btn btn-secondary" to="/">
       Home
     </Link>
-    <Link className="post__new btn btn-default" to="/blog">
+    <Link className="post__new btn btn-secondary" to="/blog">
       Blog
     </Link>
-    <Link className="post__new btn btn-default" to="/about">
+    <Link className="post__new btn btn-secondary" to="/about">
       About
     </Link>
-    <Link className="post__new btn btn-default" to="/samples">
+    <Link className="post__new btn btn-secondary" to="/samples">
       Samples
     </Link>
-    <Button bsStyle="primary">
+    <Button color="primary">
       Test
     </Button>
   </nav>

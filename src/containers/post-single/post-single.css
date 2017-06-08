@@ -1,3 +1,11 @@
+.post-single {
+  margin-top: 30px;
+}
+
 .post-single__title {
   text-align: center;
+}
+
+.post-single__thumbnail {
+  width: 50%;
 }

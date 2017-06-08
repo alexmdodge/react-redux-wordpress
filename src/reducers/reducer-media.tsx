@@ -9,15 +9,21 @@ export interface MediaData extends lodash.List<{}> {
 export interface PostsReturnAction {
   type: string;
   payload: {
-    data: MediaData;
+    slug: string,
+    media: {
+      data: MediaData;
+    };
   };
 }
 
 export default function(state: object = {}, action: PostsReturnAction) {
   switch (action.type) {
     case constants.FETCH_MEDIA:
-      console.log(action);
-      return lodash.mapKeys(action.payload.data, 'slug');
+      console.log(action.payload);
+      return {
+        ...state,
+        [action.payload.slug]: action.payload.media.data,
+      };
     default:
       return state;
   }

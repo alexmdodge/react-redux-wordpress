@@ -21,15 +21,12 @@ export function fetchPost(slug: string) {
         });
 
         /* Dispatch Second Request */
-        const data = post.data[0];
-        return getMedia(data.featured_media)
+        const { featured_media } = post.data[0];
+        return getMedia(featured_media)
           .then((media: object) => {
             dispatch({
               type: constants.FETCH_MEDIA,
-              payload: {
-                id: data.id,
-                media
-              },
+              payload: { slug, media },
             });
           })
           .then((error: object) => {

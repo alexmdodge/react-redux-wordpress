@@ -25,7 +25,7 @@ class PostsIndex extends React.Component<Props, object>  {
   }
 }
 
-function mapStateToProps({ posts }: StoreState): StoreState {
+function mapStateToProps({ posts }: StoreState) {
   return { posts };
 }
 

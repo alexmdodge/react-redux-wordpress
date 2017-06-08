@@ -8,7 +8,8 @@ import { StoreState } from '../../types';
 import SafeHtml from '../../components/safe-html';
 
 export interface Props extends RouteComponentProps<{}> {
-  post: object;
+  post: Post;
+  postMedia: PostMedia;
   fetchPost(slug: string): void;
 }
 
@@ -28,6 +29,10 @@ export interface Post {
   };
 }
 
+export interface PostMedia {
+  url: string;
+}
+
 class PostSingle extends React.Component<Props, object> {
   componentDidMount() {
     const { slug } = this.props.match.params as Params;
@@ -35,10 +40,10 @@ class PostSingle extends React.Component<Props, object> {
   }
 
   render() {
-    const post = this.props.post as Post;
-    console.log(post);
+    const { post, postMedia } = this.props;
+    console.log(post, postMedia);
 
-    if (!post) {
+    if (!post && !postMedia) {
       return <div> Loading . . . </div>;
     }
 
@@ -60,8 +65,12 @@ class PostSingle extends React.Component<Props, object> {
   }
 }
 
-function mapStateToProps({ posts }: StoreState, ownProps: any) {
-  return { post: posts[ownProps.match.params.slug] };
+function mapStateToProps({ posts, media }: StoreState, ownProps: any) {
+  const { slug } = ownProps.match.params;
+  return { 
+    post: posts[slug],
+    postMedia: media[slug],
+  };
 }
 
 export default connect(mapStateToProps, { fetchPost })(PostSingle);

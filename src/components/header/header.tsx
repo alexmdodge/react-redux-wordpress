@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import './header.css';
 
 const Header = () => (
@@ -16,6 +17,9 @@ const Header = () => (
     <Link className="post__new btn btn-default" to="/samples">
       Samples
     </Link>
+    <Button bsStyle="primary">
+      Test
+    </Button>
   </nav>
 );
 

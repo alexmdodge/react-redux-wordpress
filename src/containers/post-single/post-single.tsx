@@ -9,7 +9,7 @@ import { Jumbotron } from 'reactstrap';
 import SafeHtml from '../../components/safe-html';
 import './post-single.css';
 
-export interface Props extends RouteComponentProps<{}> {
+export interface Props extends RouteComponentProps<Params> {
   post: Post;
   postMedia: PostMedia;
   fetchPost(slug: string): void;
@@ -37,7 +37,7 @@ export interface PostMedia {
 
 class PostSingle extends React.Component<Props, object> {
   componentDidMount() {
-    const { slug } = this.props.match.params as Params;
+    const { slug } = this.props.match.params;
     this.props.fetchPost(slug);
   }
 

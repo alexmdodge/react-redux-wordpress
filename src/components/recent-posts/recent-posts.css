@@ -1,6 +1,18 @@
+.recent-posts__card {
+  background-color: #333;
+  height: 530px;
+  position: relative;
+}
+
+.recent-posts__button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 .recent-posts__title {
   font-weight: lighter;
-  margin: 20px;
+  margin: 30px;
   text-align: center;
   text-transform: uppercase;
 }

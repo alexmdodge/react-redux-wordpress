@@ -1,0 +1,11 @@
+.splash__title {
+  font-size: 3rem;
+  font-weight: lighter;
+  margin: 40px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+div .splash__container {
+  margin: 35px 0 50px;
+}

@@ -1,4 +1,4 @@
-import * as constants from '../constants';
+import * as Actions from '../constants/constants-actions';
 import * as lodash from 'lodash';
 
 export interface MediaData extends lodash.List<{}> {
@@ -18,7 +18,7 @@ export interface PostsReturnAction {
 
 export default function(state: object = {}, action: PostsReturnAction) {
   switch (action.type) {
-    case constants.FETCH_MEDIA:
+    case Actions.FETCH_MEDIA:
       return {
         ...state,
         [action.payload.slug]: action.payload.media.data,

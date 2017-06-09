@@ -33,7 +33,7 @@ function renderSafeHtml(unsafeHTML: string): HTMLString {
 }
 
 const SafeHtml = (props: Props) => (
-  <div dangerouslySetInnerHTML={renderSafeHtml(props.content)} />
+  <span dangerouslySetInnerHTML={renderSafeHtml(props.content)} />
 );
 
 export default SafeHtml;

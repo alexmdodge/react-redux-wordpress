@@ -1,22 +1,32 @@
 import axios from 'axios';
-import * as constants from '../constants';
+import * as Actions from '../constants/constants-actions';
+import * as Constants from '../constants';
 
-export function fetchPosts() {
-  const request = axios.get(`${constants.ROOT_URL}/posts`);
+export function fetchPosts(): Actions.DispatchFetchPosts {
+  const request = axios.get(`${Constants.ROOT_URL}/posts`);
 
   return {
-    type: constants.FETCH_POSTS,
+    type: Actions.FETCH_POSTS,
     payload: request, 
   };
 }
 
-export function fetchPost(slug: string) {
-  const request = axios.get(`${constants.ROOT_URL}/posts?slug=${slug}`);
+export function fetchRecentPosts(count: number): Actions.DispatchFetchRecentPost {
+  const request = axios.get(`${Constants.ROOT_URL}/posts?per_page=${count}`);
+
+  return {
+    type: Actions.FETCH_RECENT_POSTS,
+    payload: request, 
+  };
+}
+
+export function fetchPost(slug: string): Actions.DispatchFetchPost {
+  const request = axios.get(`${Constants.ROOT_URL}/posts?slug=${slug}`);
   return (dispatch: any) => {
     return request
       .then(post => {
         dispatch({
-          type: constants.FETCH_POST,
+          type: Actions.FETCH_POST,
           payload: post,
         });
 
@@ -25,13 +35,13 @@ export function fetchPost(slug: string) {
         return getMedia(featured_media)
           .then((media: object) => {
             dispatch({
-              type: constants.FETCH_MEDIA,
+              type: Actions.FETCH_MEDIA,
               payload: { slug, media },
             });
           })
           .then((error: object) => {
             dispatch({
-              type: constants.FETCH_MEDIA_ERROR,
+              type: Actions.FETCH_MEDIA_ERROR,
               payload: error,
             });
           });
@@ -41,5 +51,5 @@ export function fetchPost(slug: string) {
 
 /* Support Functions for Nesting */
 function getMedia(id: number): any {
-  return axios.get(`${constants.ROOT_URL}/media/${id}`);
+  return axios.get(`${Constants.ROOT_URL}/media/${id}`);
 }

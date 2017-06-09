@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from './containers/home';
+import Home from './containers/home/home';
 import Header from './components/header/header';
 import PostSingle from './containers/post-single/post-single';
 import './App.css';

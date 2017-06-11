@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as lodash from 'lodash';
 import { Link } from 'react-router-dom';
-import { Card, CardImg, CardText, CardBlock,
+import { Card, CardText, CardBlock,
   CardTitle, Col, Row } from 'reactstrap';
 import SafeHtml from '../safe-html';
 import './recent-posts.css';
@@ -15,12 +15,12 @@ export default class RecentPosts extends React.Component<Props, object> {
     return (
       <Col key={post.id} xs="12" sm="12" md="6" lg="4">
         <Card className="recent-posts__card">
-          <CardImg 
-            top={true}
-            width="100%" 
-            src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" 
-            alt="Card image cap"
-          />
+          <div className="recent-posts__image-wrapper card-img-top">
+            <img 
+              className="recent-posts__image"
+              src={post.better_featured_image.source_url}
+            />
+          </div>
           <CardBlock>
             <CardTitle>
               {post.title.rendered}

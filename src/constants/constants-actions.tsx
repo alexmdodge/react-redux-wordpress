@@ -24,5 +24,6 @@ export interface DispatchFetchRecentPost {
   payload: Promise<any>;
 }
 export interface DispatchFetchPost {
-  (dispatch: any): any;
+  type: FETCH_POST;
+  payload: Promise<any>;
 }

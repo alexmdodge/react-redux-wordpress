@@ -24,6 +24,9 @@ export interface Post {
   title: {
     rendered: string;
   };
+  better_featured_image: {
+    source_url: string;
+  };
   tags: Array<number>;
   date: Date;
   content: {
@@ -42,11 +45,12 @@ class PostSingle extends React.Component<Props, object> {
   }
 
   render() {
-    const { post, postMedia } = this.props;
+    const { post } = this.props;
 
-    if (!post || !postMedia) {
+    if (!post) {
       return <div> Loading . . . </div>;
     }
+    const { better_featured_image: image } = post;
 
     return (
       <div className="post-single">
@@ -55,7 +59,7 @@ class PostSingle extends React.Component<Props, object> {
             {post.title.rendered}
           </h1>
           <img 
-            src={postMedia.source_url}
+            src={image.source_url}
             className="rounded post-single__thumbnail"
           />
         </Jumbotron>
@@ -70,12 +74,8 @@ class PostSingle extends React.Component<Props, object> {
   }
 }
 
-function mapStateToProps({ posts, media }: StoreState, ownProps: any) {
-  const { slug } = ownProps.match.params;
-  return { 
-    post: posts[slug],
-    postMedia: media[slug],
-  };
+function mapStateToProps({ posts }: StoreState, ownProps: any) {
+  return { post: posts[ownProps.match.params.slug] };
 }
 
 export default connect(mapStateToProps, { fetchPost })(PostSingle);

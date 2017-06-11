@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import ScrollToTop from './components/scroll-to-top';
 import Home from './containers/home/home';
 import Header from './components/header/header';
 import PostSingle from './containers/post-single/post-single';
@@ -11,13 +12,13 @@ class App extends React.Component<{}, null> {
     return (
       <div className="container">
         <BrowserRouter>
-          <div>
+          <ScrollToTop>
             <Header />
             <Switch>
               <Route path="/blog/posts/:slug" component={PostSingle} />
               <Route path="/" component={Home} />
             </Switch>
-          </div>
+          </ScrollToTop>
         </BrowserRouter>
       </div>
     );

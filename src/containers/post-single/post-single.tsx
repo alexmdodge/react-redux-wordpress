@@ -3,14 +3,13 @@ import * as moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchPost } from '../../actions';
 import { RouteComponentProps } from 'react-router-dom';
-import { StoreState } from '../../types';
 import { Jumbotron } from 'reactstrap';
 
 import SafeHtml from '../../components/safe-html';
 import './post-single.css';
 
 export interface Props extends RouteComponentProps<Params> {
-  post: Post;
+  post: WP.Post;
   postMedia: PostMedia;
   fetchPost(slug: string): void;
 }
@@ -18,20 +17,6 @@ export interface Props extends RouteComponentProps<Params> {
 export interface Params {
   id: number;
   slug: string;
-}
-
-export interface Post {
-  title: {
-    rendered: string;
-  };
-  better_featured_image: {
-    source_url: string;
-  };
-  tags: Array<number>;
-  date: Date;
-  content: {
-    rendered: string;
-  };
 }
 
 export interface PostMedia {
@@ -74,7 +59,7 @@ class PostSingle extends React.Component<Props, object> {
   }
 }
 
-function mapStateToProps({ posts }: StoreState, ownProps: any) {
+function mapStateToProps({ posts }: WP.StoreState, ownProps: any) {
   return { post: posts[ownProps.match.params.slug] };
 }
 

@@ -28,3 +28,10 @@ export function fetchPost(slug: string): Actions.DispatchFetchPost {
     payload: request,
   };
 }
+
+export function updatePostRange(date: number): Actions.DispatchUpdatePostRange {
+  return {
+    type: Actions.UPDATE_POST_RANGE,
+    payload: date,
+  };
+}

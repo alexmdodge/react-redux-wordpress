@@ -7,6 +7,8 @@ export const FETCH_MEDIA = 'fetch_media';
 export const FETCH_MEDIA_ERROR = 'fetch_media_error';
 export const CREATE_POST = 'create_post';
 
+export const UPDATE_POST_RANGE = 'update_post_range';
+
 export type FETCH_POSTS = typeof FETCH_POSTS;
 export type FETCH_POST = typeof FETCH_POST;
 export type FETCH_RECENT_POSTS = typeof FETCH_RECENT_POSTS;
@@ -14,6 +16,8 @@ export type FETCH_RECENT_POSTS = typeof FETCH_RECENT_POSTS;
 export type FETCH_MEDIA = typeof FETCH_MEDIA;
 export type FETCH_MEDIA_ERROR = typeof FETCH_MEDIA_ERROR;
 export type CREATE_POST = typeof CREATE_POST;
+
+export type UPDATE_POST_RANGE = typeof UPDATE_POST_RANGE;
 
 export interface DispatchFetchPosts {
   type: FETCH_POSTS;
@@ -26,4 +30,9 @@ export interface DispatchFetchRecentPost {
 export interface DispatchFetchPost {
   type: FETCH_POST;
   payload: Promise<any>;
+}
+
+export interface DispatchUpdatePostRange {
+  type: UPDATE_POST_RANGE;
+  payload: number;
 }

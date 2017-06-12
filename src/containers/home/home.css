@@ -14,6 +14,12 @@ div .splash__container {
   margin-bottom: 40px;
 }
 
+.callout {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .callout__title {
   font-weight: lighter;
   margin: 35px;
@@ -23,7 +29,11 @@ div .splash__container {
 
 .callout__body {
   width: 80%;
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(0,0,0,0.02);
   padding: 30px;
-  border-radius: 3px;
+  position: relative;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }

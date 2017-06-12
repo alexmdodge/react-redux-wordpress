@@ -7,7 +7,7 @@ import SafeHtml from '../safe-html';
 import './recent-posts.css';
 
 export interface Props {
-  posts: object;
+  posts: WP.Post[];
 }
 
 export default class RecentPosts extends React.Component<Props, object> {

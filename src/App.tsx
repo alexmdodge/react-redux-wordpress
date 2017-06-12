@@ -16,7 +16,7 @@ class App extends React.Component<{}, null> {
           <ScrollToTop>
             <Header />
             <Switch>
-              <Route path="/blog/posts/:slug" component={PostSingle} />
+              <Route path="/blog/:slug" component={PostSingle} />
               <Route path="/blog" component={Blog} />
               <Route path="/" component={Home} />
             </Switch>

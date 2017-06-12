@@ -4,10 +4,11 @@ import './post-list-item.css';
 
 interface Props {
   post: WP.Post;
+  onSelectPost(): void;
 }
 
 const PostListItem = (props: Props): JSX.Element => (
-  <div className="post-item">
+  <div onClick={() => props.onSelectPost()} className="post-item">
     <h3 className="posts-item__title">
       {props.post.title.rendered}
     </h3>

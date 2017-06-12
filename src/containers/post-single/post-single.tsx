@@ -6,6 +6,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Jumbotron } from 'reactstrap';
 
 import SafeHtml from '../../components/safe-html';
+import Loading from '../../components/common/loading/loading';
 import './post-single.css';
 
 export interface Props extends RouteComponentProps<Params> {
@@ -33,7 +34,7 @@ class PostSingle extends React.Component<Props, object> {
     const { post } = this.props;
 
     if (!post) {
-      return <div> Loading . . . </div>;
+      return <Loading />;
     }
     const { better_featured_image: image } = post;
 

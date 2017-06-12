@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
 import './header.css';
 
 const Header = () => (
@@ -17,9 +16,6 @@ const Header = () => (
     <Link className="post__new btn btn-secondary" to="/samples">
       Samples
     </Link>
-    <Button color="primary">
-      Test
-    </Button>
   </nav>
 );
 

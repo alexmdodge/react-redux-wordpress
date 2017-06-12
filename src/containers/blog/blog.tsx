@@ -23,6 +23,10 @@ class Blog extends React.Component<Props, object> {
     this.props.fetchPosts();
   }
 
+  onSelectPost = (slug: string): void => {
+    this.props.history.push(`/blog/${slug}`);
+  }
+
   /**
    * Return all posts as post list components which were published
    * in the month specified. Will hold future support for two dates
@@ -33,9 +37,18 @@ class Blog extends React.Component<Props, object> {
       const postDate = Date.parse(this.props.posts[key].date);
       const { min, max } = this.props.postsRange;
       return (postDate <= max && postDate >= min);
-    }).map((key) => <PostListItem post={this.props.posts[key]} key={key}/> );
+    }).map((key) => {
+      const post = this.props.posts[key];
+      return (
+        <PostListItem
+          onSelectPost={() => this.onSelectPost(post.slug)}
+          post={post} 
+          key={key}
+        />
+      );
+    });
   }
-  
+
   render() {
     if (!this.props.posts) { 
       return <Loading />; 

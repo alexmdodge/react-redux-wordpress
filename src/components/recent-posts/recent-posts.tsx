@@ -18,7 +18,7 @@ export default class RecentPosts extends React.Component<Props, object> {
           <div className="recent-posts__image-wrapper card-img-top">
             <img 
               className="recent-posts__image"
-              src={post.better_featured_image.source_url}
+              src={post.better_featured_image.media_details.sizes['card-header'].source_url}
             />
           </div>
           <CardBlock>
@@ -29,7 +29,7 @@ export default class RecentPosts extends React.Component<Props, object> {
               <SafeHtml content={post.excerpt.rendered} />
             </CardText>
             <Link
-              to={`/blog/posts/${post.slug}`}
+              to={`/blog/${post.slug}`}
               className="btn btn-secondary recent-posts__button"
             >
               View Post

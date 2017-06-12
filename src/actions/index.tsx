@@ -29,9 +29,9 @@ export function fetchPost(slug: string): Actions.DispatchFetchPost {
   };
 }
 
-export function updatePostRange(date: number): Actions.DispatchUpdatePostRange {
+export function updatePostRange(date: number): Actions.DispatchUpdatePostsRange {
   return {
-    type: Actions.UPDATE_POST_RANGE,
+    type: Actions.UPDATE_POSTS_RANGE,
     payload: date,
   };
 }

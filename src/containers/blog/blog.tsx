@@ -3,10 +3,18 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
+
 import PostRangePicker from '../post-range-picker/post-range-picker';
+import PostListItem from '../../components/post-list-item/post-list-item';
+import Loading from '../../components/common/loading/loading';
+import './blog.css';
 
 export interface Props extends RouteComponentProps<{}> {
   posts: WP.Post[];
+  postsRange: {
+    min: number;
+    max: number;
+  };
   fetchPosts(): void;
 }
 
@@ -15,11 +23,23 @@ class Blog extends React.Component<Props, object> {
     this.props.fetchPosts();
   }
 
+  /**
+   * Return all posts as post list components which were published
+   * in the month specified. Will hold future support for two dates
+   * if multiple selections are required.
+   */
   renderPostsList = (): any => {
-    return <div> Post List </div>;
+    return Object.keys(this.props.posts).filter((key) => {
+      const postDate = Date.parse(this.props.posts[key].date);
+      const { min, max } = this.props.postsRange;
+      return (postDate <= max && postDate >= min);
+    }).map((key) => <PostListItem post={this.props.posts[key]} key={key}/> );
   }
   
   render() {
+    if (!this.props.posts) { 
+      return <Loading />; 
+    }
     return (
       <div className="blog">
         <Row>
@@ -33,9 +53,10 @@ class Blog extends React.Component<Props, object> {
           </Col>
 
           <Col xs="12" md="3" className="blog__navigation">
-            <h3 className="blog__navigation-title">
+            <h5 className="blog__navigation-title">
               By Date
-            </h3>
+            </h5>
+            <hr/>
             <PostRangePicker />
           </Col>
         </Row>
@@ -44,8 +65,11 @@ class Blog extends React.Component<Props, object> {
   }
 }
 
-function mapStateToProps({ posts }: WP.StoreState, ownProp?: Props) {
-  return { posts };
+function mapStateToProps({ posts, ui }: WP.StoreState) {
+  return { 
+    posts,
+    postsRange: ui.postsFilter.postsRange,
+  };
 }
 
 export default connect(mapStateToProps, { fetchPosts })(Blog);

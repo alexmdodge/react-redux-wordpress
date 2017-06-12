@@ -1,8 +1,20 @@
-import { DispatchUpdatePostRange, UPDATE_POST_RANGE } from '../constants/constants-actions';
+import { DispatchUpdatePostsRange, UPDATE_POSTS_RANGE } from '../constants/constants-actions';
 
-export default function(state: object = {}, action: DispatchUpdatePostRange) {
+// postsRange is subset of validMonths
+const defaultFilterState = {
+  postsRange: {
+    min: 0, 
+    max: Date.now(),
+  },
+  validMonths: {
+    min: 0,
+    max: Date.now(),
+  },
+};
+
+export default function(state: object = defaultFilterState, action: DispatchUpdatePostsRange) {
   switch (action.type) {
-    case UPDATE_POST_RANGE:
+    case UPDATE_POSTS_RANGE:
       return state;
     default:
       return state;

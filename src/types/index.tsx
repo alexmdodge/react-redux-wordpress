@@ -9,6 +9,9 @@ declare namespace WP {
     title: {
       rendered: string;
     };
+    excerpt: {
+      rendered: string;
+    };
     better_featured_image: {
       source_url: string;
     };

@@ -7,6 +7,7 @@ import { Row, Col } from 'reactstrap';
 import PostRangePicker from '../post-range-picker/post-range-picker';
 import PostListItem from '../../components/post-list-item/post-list-item';
 import Loading from '../../components/common/loading/loading';
+import Breadcrumbs from '../../components/common/breadcrumbs';
 import './blog.css';
 
 export interface Props extends RouteComponentProps<{}> {
@@ -55,6 +56,9 @@ class Blog extends React.Component<Props, object> {
     }
     return (
       <div className="blog">
+        <Breadcrumbs 
+          history={this.props.history}
+        />
         <Row>
           <Col xs="12" md="9" className="blog__post-wrapper">
             <h1 className="blog__title">

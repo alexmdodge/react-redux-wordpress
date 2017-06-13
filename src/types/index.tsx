@@ -21,4 +21,10 @@ declare namespace WP {
       rendered: string;
     };
   }
+
+  interface History {
+    location: {
+      pathname: string;
+    };
+  }
 }

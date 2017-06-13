@@ -7,6 +7,7 @@ import { Jumbotron } from 'reactstrap';
 
 import SafeHtml from '../../components/safe-html';
 import Loading from '../../components/common/loading/loading';
+import Breadcrumbs from '../../components/common/breadcrumbs';
 import './post-single.css';
 
 export interface Props extends RouteComponentProps<Params> {
@@ -40,6 +41,7 @@ class PostSingle extends React.Component<Props, object> {
 
     return (
       <div className="post-single">
+        <Breadcrumbs history={this.props.history} />
         <Jumbotron className="post-single__title">
           <h1>
             {post.title.rendered}

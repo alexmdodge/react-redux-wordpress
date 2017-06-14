@@ -1,3 +1,4 @@
 # React Redux WordPress
 
-A test project for integrating React, Redux, Typescript, and WordPress
+A framework project for integrating React and Redux with WordPress
+through the WordPress REST API.

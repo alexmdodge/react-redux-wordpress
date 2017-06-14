@@ -17,7 +17,7 @@ class PostRangePicker extends React.Component<Props, any> {
     const endMonth = moment(this.props.validMonths.min).startOf('month');
     while (currentMonth.format('x') > endMonth.format('x')) {
       months.push(moment(currentMonth));
-      currentMonth.subtract(1, 'month');  
+      currentMonth.subtract(1, 'month');
     }
     console.log(months);
     return months.map(month => (
@@ -32,10 +32,12 @@ class PostRangePicker extends React.Component<Props, any> {
   }
   
   render() {
-    console.log(this.props.validMonths);
     return (
       <ul className="range-picker">
-        <li className="range-picker__item">
+        <li 
+          
+          className="range-picker__item"
+        >
           All Posts
         </li>
         {this.renderRangeList()}

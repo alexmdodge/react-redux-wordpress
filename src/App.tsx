@@ -11,9 +11,6 @@ import About from './components/public/about/about';
 import Samples from './components/public/samples/samples';
 import PostSingle from './containers/post-single/post-single';
 
-/* Other Imports */
-import './App.css';
-
 /**
  * The entry point of the application. Contains the header, routing, and 
  * a component to ensure routing always sets the window to the top.

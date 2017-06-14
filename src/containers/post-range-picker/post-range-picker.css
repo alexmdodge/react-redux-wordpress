@@ -1,0 +1,25 @@
+.range-picker {
+  list-style: none;
+  text-decoration: none;
+  padding: 0 5px;
+  margin: 0;
+}
+
+.range-picker__item {
+  cursor: pointer;
+  margin: 5px 0;
+  padding-left: 5px;
+  border-left: 4px solid transparent;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.range-picker__item--active {
+  font-weight: bold;
+  border-left-color: rgba(105, 165, 239, 0.7);
+}
+
+.range-picker__item:hover {
+  border-left: 4px solid rgba(105, 165, 239, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translateX(3px);
+}

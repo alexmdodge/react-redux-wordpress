@@ -2,12 +2,18 @@ import axios from 'axios';
 import * as Actions from '../constants/constants-actions';
 import * as Constants from '../constants';
 
-export function fetchPosts(): Actions.DispatchFetchPosts {
+export function fetchPosts() {
   const request = axios.get(`${Constants.ROOT_URL}/posts`);
 
-  return {
-    type: Actions.FETCH_POSTS,
-    payload: request, 
+  return (dispatch: any) => {
+    return request.then(response => {
+      dispatch({
+        type: Actions.FETCH_POSTS,
+        payload: response,
+      });
+      const minDate = response.data.map((post: any) => Date.parse(post.date)).pop();
+      return dispatch(updateValidMonths(minDate));
+    });
   };
 }
 
@@ -29,9 +35,16 @@ export function fetchPost(slug: string): Actions.DispatchFetchPost {
   };
 }
 
-export function updatePostRange(date: number): Actions.DispatchUpdatePostsRange {
+export function updatePostRange(date: string): Actions.DispatchUpdatePostsRange {
   return {
     type: Actions.UPDATE_POSTS_RANGE,
+    payload: date,
+  };
+}
+
+export function updateValidMonths(date: number): Actions.DispatchUpdateValidMonths {
+  return {
+    type: Actions.UPDATE_VALID_MONTHS,
     payload: date,
   };
 }

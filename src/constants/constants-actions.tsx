@@ -8,6 +8,7 @@ export const FETCH_MEDIA_ERROR = 'fetch_media_error';
 export const CREATE_POST = 'create_post';
 
 export const UPDATE_POSTS_RANGE = 'update_post_range';
+export const UPDATE_VALID_MONTHS = 'update_valid_months';
 
 export type FETCH_POSTS = typeof FETCH_POSTS;
 export type FETCH_POST = typeof FETCH_POST;
@@ -18,6 +19,7 @@ export type FETCH_MEDIA_ERROR = typeof FETCH_MEDIA_ERROR;
 export type CREATE_POST = typeof CREATE_POST;
 
 export type UPDATE_POSTS_RANGE = typeof UPDATE_POSTS_RANGE;
+export type UPDATE_VALID_MONTHS = typeof UPDATE_VALID_MONTHS;
 
 export interface DispatchFetchPosts {
   type: FETCH_POSTS;
@@ -34,5 +36,10 @@ export interface DispatchFetchPost {
 
 export interface DispatchUpdatePostsRange {
   type: UPDATE_POSTS_RANGE;
+  payload: string;
+}
+
+export interface DispatchUpdateValidMonths {
+  type: UPDATE_VALID_MONTHS;
   payload: number;
 }

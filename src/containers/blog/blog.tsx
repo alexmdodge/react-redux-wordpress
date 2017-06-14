@@ -56,9 +56,6 @@ class Blog extends React.Component<Props, object> {
     }
     return (
       <div className="blog">
-        <Breadcrumbs 
-          history={this.props.history}
-        />
         <Row>
           <Col xs="12" md="9" className="blog__post-wrapper">
             <h1 className="blog__title">
@@ -77,6 +74,7 @@ class Blog extends React.Component<Props, object> {
             <PostRangePicker />
           </Col>
         </Row>
+        <Breadcrumbs history={this.props.history} />
       </div>
     );
   }

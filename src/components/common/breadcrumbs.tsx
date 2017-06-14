@@ -10,15 +10,22 @@ function renderBreadcrumbs(history: WP.History) {
   const { pathname } = history.location;
   return pathname.substring(1).split('/') 
     .map(path => {
-      const currentPath = pathname.substring(0, pathname.indexOf('path') + path.length);
-      const pathTitle = path.split(/^-|_$/).join(' ').trim();
-      return <BreadcrumbItem key={path} tag="span"><Link to={currentPath}> {pathTitle} </Link></BreadcrumbItem>;
+      let position = pathname.indexOf(path) + path.length;
+      const currentPath = pathname.substring(0, position);
+      const pathTitle = path.split('-').join(' ').trim();
+      return (
+        <BreadcrumbItem key={path} tag="span">
+          <Link to={currentPath} style={{textTransform: 'capitalize'}}>
+            {pathTitle}
+          </Link>
+        </BreadcrumbItem>
+      );
     });
 }
 
 const Breadcrumbs = (props: Props): JSX.Element => (
   <div>
-    <Breadcrumb tag="nav">
+    <Breadcrumb tag="nav" >
       <BreadcrumbItem tag="span">
         <Link to="/"> Home </Link>
       </BreadcrumbItem>

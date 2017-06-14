@@ -18,7 +18,6 @@ export default function(state: object = {}, action: PostsReturnAction) {
     case Actions.FETCH_POSTS:
       return lodash.mapKeys(action.payload.data, 'slug');
     case Actions.FETCH_POST:
-      console.log('Trigger post action', action.payload);
       return {
         ...state,
         [action.payload.data[0].slug]: action.payload.data[0],

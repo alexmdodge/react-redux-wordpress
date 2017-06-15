@@ -8,3 +8,4 @@ export {default as PostFilter} from './post-filter/PostFilter';
 export {default as PostList} from './post-list/PostList';
 export {default as SinglePost} from './post-single/SinglePost';
 export {default as RecentPosts} from './recent-posts/RecentPost';
+export {default as NoPage} from './no-page/NoPage';

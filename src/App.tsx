@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /* Public Application Components */
-import {Header, SinglePost, ScrollToTop} from './components/common';
+import {Header, SinglePost, ScrollToTop, NoPage} from './components/common';
 import {Home, Blog, About, Samples} from './components/public';
 
 /* Admin Application Components */
@@ -32,7 +32,8 @@ const App = () => (
           <Route path="/admin/login" component={Login} />
           <Route path="/blog/:slug" component={SinglePost} />
           <Route path="/blog" component={Blog} />
-          <Route path="/" component={Home} />
+          <Route path="/" exact={true} component={Home} />
+          <Route component={NoPage} />
         </Switch>
       </ScrollToTop>
     </BrowserRouter>

@@ -70,7 +70,7 @@ class PostManager extends React.Component<any, any> {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 

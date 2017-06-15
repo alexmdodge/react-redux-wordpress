@@ -7,7 +7,7 @@ import { Jumbotron } from 'reactstrap';
 
 import SafeHtml from '../SafeHtml';
 import Loading from '../loading/Loading';
-import Breadcrumbs from '../Breadcrumbs';
+import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
 import './SinglePost.css';
 
 export interface Props extends RouteComponentProps<Params> {

@@ -4,10 +4,7 @@ import { fetchPosts } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
 
-import PostRangePicker from '../../common/post-filter/PostFilter';
-import PostListItem from '../../common/post/Post';
-import Loading from '../../common/loading/Loading';
-import Breadcrumbs from '../../common/Breadcrumbs';
+import { PostFilter, Post, Loading, Breadcrumbs } from '../../common';
 import './blog.css';
 
 export interface Props extends RouteComponentProps<{}> {
@@ -41,7 +38,7 @@ class Blog extends React.Component<Props, object> {
     }).map((key) => {
       const post = this.props.posts[key];
       return (
-        <PostListItem
+        <Post
           onSelectPost={() => this.onSelectPost(post.slug)}
           post={post} 
           key={key}
@@ -71,7 +68,7 @@ class Blog extends React.Component<Props, object> {
               By Date
             </h5>
             <hr/>
-            <PostRangePicker />
+            <PostFilter />
           </Col>
         </Row>
         <Breadcrumbs history={this.props.history} />

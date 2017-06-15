@@ -2,15 +2,12 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-/* Application Components */
-import Login from './components/admin/login/Login';
-import Home from './components/public/home/Home';
-import Blog from './components/public/blog/Blog';
-import About from './components/public/about/About';
-import Header from './components/common/header/Header';
-import Samples from './components/public/samples/Samples';
-import SinglePost from './components/common/post-single/SinglePost';
-import ScrollToTop from './components/common/ScrollToTop';
+/* Public Application Components */
+import {Header, SinglePost, ScrollToTop} from './components/common';
+import {Home, Blog, About, Samples} from './components/public';
+
+/* Admin Application Components */
+import {Dashboard, Login, PostManager} from './components/admin';
 
 /**
  * The entry point of the application. Contains the header, routing, and 
@@ -27,7 +24,7 @@ const App = () => (
           {/* Login path for acquiring authentication */}
           <Route path="/login" component={Login} />
           {/* Private routes requiring authentication */}
-          <Route path="/admin/:authKey" component={Admin} />
+          <Route path="/admin/:authKey" component={Dashboard} />
           <Route path="/admin/post-manager/:authKey" component={PostManager} />
           {/* Public Routes without Authentication */}
           <Route path="/about" component={About} />

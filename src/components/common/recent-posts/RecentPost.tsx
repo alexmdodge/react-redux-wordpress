@@ -3,7 +3,7 @@ import * as lodash from 'lodash';
 import { Link } from 'react-router-dom';
 import { Card, CardText, CardBlock,
   CardTitle, Col, Row } from 'reactstrap';
-import SafeHtml from '../safe-html';
+import SafeHtml from '../../common/SafeHtml';
 import './recent-posts.css';
 
 export interface Props {

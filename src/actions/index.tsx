@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as Actions from '../constants/constants-actions';
+import * as Actions from '../constants';
 import * as Constants from '../constants';
 
 export function fetchPosts() {

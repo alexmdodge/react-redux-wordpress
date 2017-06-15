@@ -1,4 +1,4 @@
-import * as Actions from '../constants/constants-actions';
+import * as Actions from '../constants/';
 import * as lodash from 'lodash';
 
 export interface PostData extends lodash.List<{}> {

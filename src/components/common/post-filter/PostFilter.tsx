@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
-import { updatePostRange } from '../../actions/index';
+import { updatePostRange } from '../../../actions';
 
 import './post-range-picker.css';
 

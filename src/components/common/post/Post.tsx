@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SafeHtml from '../safe-html';
+import SafeHtml from '../SafeHtml';
 import './post-list-item.css';
 
 interface Props {

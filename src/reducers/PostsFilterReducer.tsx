@@ -1,4 +1,4 @@
-import * as Actions from '../constants/constants-actions';
+import * as Actions from '../constants';
 import * as moment from 'moment';
 
 export interface UpdateRangeReturnAction {

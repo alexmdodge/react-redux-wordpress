@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
-import { fetchPost } from '../../actions';
+import { fetchPost } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { Jumbotron } from 'reactstrap';
 
-import SafeHtml from '../../components/safe-html';
-import Loading from '../../components/common/loading/loading';
-import Breadcrumbs from '../../components/common/breadcrumbs';
-import './post-single.css';
+import SafeHtml from '../SafeHtml';
+import Loading from '../loading/Loading';
+import Breadcrumbs from '../Breadcrumbs';
+import './SinglePost.css';
 
 export interface Props extends RouteComponentProps<Params> {
   post: WP.Post;

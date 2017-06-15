@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions';
+import { fetchPosts } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { Jumbotron } from 'reactstrap';
 import './home.css';
 
-import RecentPosts from '../../components/recent-posts/recent-posts';
+import RecentPosts from '../../common/recent-posts/RecentPost';
 
-export interface Props extends RouteComponentProps<{}> {
+interface Props extends RouteComponentProps<{}> {
   posts: {[key: string]: WP.Post};
   fetchPosts(): void;
 }

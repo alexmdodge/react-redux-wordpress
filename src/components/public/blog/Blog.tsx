@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions';
+import { fetchPosts } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
 
-import PostRangePicker from '../post-range-picker/post-range-picker';
-import PostListItem from '../../components/post-list-item/post-list-item';
-import Loading from '../../components/common/loading/loading';
-import Breadcrumbs from '../../components/common/breadcrumbs';
+import PostRangePicker from '../../common/post-filter/PostFilter';
+import PostListItem from '../../common/post/Post';
+import Loading from '../../common/loading/Loading';
+import Breadcrumbs from '../../common/Breadcrumbs';
 import './blog.css';
 
 export interface Props extends RouteComponentProps<{}> {

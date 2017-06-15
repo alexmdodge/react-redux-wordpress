@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
-class PostsNew extends React.Component<any, any> {
+class PostManager extends React.Component<any, any> {
   renderField = (field: any) => {
     const { touched, error } = field.meta;
     const errorClasses = touched && error ? 'has-danger' : ''; 
@@ -100,5 +100,5 @@ export default reduxForm({
   form: 'PostsNewForm',
   validate,
 })(
-  connect()(PostsNew)
+  connect()(PostManager)
 );

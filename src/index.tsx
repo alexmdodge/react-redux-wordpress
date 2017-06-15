@@ -13,7 +13,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 /* Other Imports */
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import './styles/global.css';
 
 const createStoreWithMiddleware = applyMiddleware(promise, thunk)(createStore);
 

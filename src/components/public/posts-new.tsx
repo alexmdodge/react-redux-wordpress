@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import { createPost } from '../actions/index';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
-class PostsNew extends Component {
-  renderField = (field) => {
+class PostsNew extends React.Component<any, any> {
+  renderField = (field: any) => {
     const { touched, error } = field.meta;
     const errorClasses = touched && error ? 'has-danger' : ''; 
     return (
@@ -25,7 +24,7 @@ class PostsNew extends Component {
     );
   }
 
-  onSubmit = values => {
+  onSubmit = (values: any) => {
     console.log(values);
     this.props.createPost(values, () => {
       this.props.history.push('/');
@@ -75,9 +74,9 @@ class PostsNew extends Component {
   }
 }
 
-function validate(values) {
+function validate(values: any) {
 
-  const errors = {};
+  const errors = {} as any;
 
   // Validate the inputs from the 'values'
   if (!values.title) {
@@ -101,5 +100,5 @@ export default reduxForm({
   form: 'PostsNewForm',
   validate,
 })(
-  connect(null, { createPost })(PostsNew)
+  connect()(PostsNew)
 );

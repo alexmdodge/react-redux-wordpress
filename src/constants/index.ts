@@ -43,3 +43,6 @@ export interface DispatchUpdateValidMonths {
   type: UPDATE_VALID_MONTHS;
   payload: number;
 }
+
+// API URL Options
+export const ROOT_URL = 'https://api.alexdodge.ca/wp-json/wp/v2';

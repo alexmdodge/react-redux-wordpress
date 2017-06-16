@@ -9,35 +9,57 @@ import {Home, Blog, About, Samples} from './components/public';
 /* Admin Application Components */
 import {Dashboard, Login, PostManager} from './components/admin';
 
+/** 
+ * Route Configuration
+ * component -> The component to be rendered to the page
+ * path  -> The path matched when navigation occurs, order is sensitive
+ * title -> Title of page to be reflected in the header title
+ * label -> Label to be applied in navigation components like the header or sidebars
+ * exact -> No partial matching for the route (/blog won't match /blog/sub-page)
+ * isAdmin -> Will only render in header in admin pages
+ * isChild -> Is a nested route of another route component
+ */
+const routes: WP.Route[] = [
+  { path: '/', title: 'RRW | Home', label: 'Home', exact: true, component: Home },
+  { path: '/about', title: 'RRW | About', label: 'About', component: About },
+  { path: '/samples', title: 'RRW | Samples', label: 'Samples',  component: Samples },
+  { path: '/login', title: 'RRW | Login', label: 'Login',  component: Login, isAdmin: true },
+  { path: '/blog/:slug', title: 'RRW', component: SinglePost, isChild: true },
+  { path: '/blog', title: 'RRW | Blog', label: 'Blog', component: Blog },
+  { path: '/admin/post-manager', title: 'RRW | Post Manager', component: PostManager, isAdmin: true, isChild: true },
+  { path: '/admin', title: 'RRW | Admin', label: 'Dashboard',  component: Dashboard, isAdmin: true },
+  { title: 'RRW | 404 Error', component: NoPage }
+];
+
 /**
- * The entry point of the application. Contains the header, routing, and 
- * a component to ensure routing always sets the window to the top.
- * 
+ * Handles dynamic rendering of routes with all sub-routes being passed as props to child
+ * components.
+ */
+const RouteWithSubRoutes = (route: WP.Route) => (
+  <Route
+    path={route.path}
+    render={props => ( <route.component {...props} routes={route.routes}/> )}
+  />
+);
+
+/**
+ * The entry point of the application. Contains the header, routing, and
+ * a component to ensure routing always sets the window to the top. The routing
+ * is configured above to allow for dynamic configuration of routes later in the app.
+ *
  * Note: The generic structure for the React.Component is <Props, State>
  */
 const App = () => (
-  <div className="container">
-    <BrowserRouter>
-      <ScrollToTop>
-        <Header />
-        <Switch>
-          {/* Login path for acquiring authentication */}
-          <Route path="/login" component={Login} />
-          {/* Private routes requiring authentication */}
-          <Route path="/admin/:authKey" component={Dashboard} />
-          <Route path="/admin/post-manager/:authKey" component={PostManager} />
-          {/* Public Routes without Authentication */}
-          <Route path="/about" component={About} />
-          <Route path="/samples" component={Samples} />
-          <Route path="/admin/login" component={Login} />
-          <Route path="/blog/:slug" component={SinglePost} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/" exact={true} component={Home} />
-          <Route component={NoPage} />
-        </Switch>
-      </ScrollToTop>
-    </BrowserRouter>
-  </div>
+  <BrowserRouter>
+    <ScrollToTop>
+      <Header routes={routes}/>
+      <Switch>
+        {routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
+      </Switch>
+    </ScrollToTop>
+  </BrowserRouter>
 );
 
 export default App;

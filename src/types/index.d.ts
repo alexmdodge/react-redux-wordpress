@@ -22,9 +22,19 @@ declare namespace WP {
     };
   }
 
-  interface History {
-    location: {
-      pathname: string;
-    };
+  interface Route {
+    title?: string;
+    component: any;
+    label?: string;
+    path?: string;
+    exact?: boolean;
+    isAdmin?: boolean;
+    isChild?: boolean;
+    routes?: SimpleRoute[];
+  }
+
+  interface SimpleRoute {
+    path: string;
+    component: any;
   }
 }

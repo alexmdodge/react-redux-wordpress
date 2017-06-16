@@ -1,16 +1,20 @@
 import * as React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import './Header.css';
 
-// interface Props {
-//   color?: string;
-// }
+interface Props extends RouteComponentProps<any> {
+  routes: WP.Route[];
+  color?: string;
+}
 
-class Header extends React.Component<any, any> {
+class Header extends React.Component<Props, any> {
+  renderNavigation = (): any => {
+    console.log(this.props.routes);
+  }
   render() {
-    console.log(this.props);
     return (
       <nav className="post-nav">
+        {this.renderNavigation()}
         <Link className="post__new btn btn-link" to="/">
           Home
         </Link>
@@ -28,4 +32,4 @@ class Header extends React.Component<any, any> {
   }
 }
 
-export default withRouter(Header);
+export default withRouter<any>(Header);

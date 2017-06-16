@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { History } from 'history';
 
 interface Props {
-  history: WP.History;
+  history: History;
 }
 
-function renderBreadcrumbs(history: WP.History) {
+function renderBreadcrumbs(history: History) {
   const { pathname } = history.location;
   return pathname.substring(1).split('/') 
     .map(path => {

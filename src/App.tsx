@@ -22,11 +22,11 @@ import {Dashboard, Login, PostManager} from './components/admin';
  */
 const routes: WP.Route[] = [
   { path: '/', title: 'RRW | Home', label: 'Home', exact: true, component: Home },
+  { path: '/blog/:slug', title: 'RRW', component: SinglePost, isChild: true },
+  { path: '/blog', title: 'RRW | Blog', label: 'Blog', component: Blog },
   { path: '/about', title: 'RRW | About', label: 'About', component: About },
   { path: '/samples', title: 'RRW | Samples', label: 'Samples',  component: Samples },
   { path: '/login', title: 'RRW | Login', label: 'Login',  component: Login, isAdmin: true },
-  { path: '/blog/:slug', title: 'RRW', component: SinglePost, isChild: true },
-  { path: '/blog', title: 'RRW | Blog', label: 'Blog', component: Blog },
   { path: '/admin/post-manager', title: 'RRW | Post Manager', component: PostManager, isAdmin: true, isChild: true },
   { path: '/admin', title: 'RRW | Admin', label: 'Dashboard',  component: Dashboard, isAdmin: true },
   { title: 'RRW | 404 Error', component: NoPage, isHidden: true }
@@ -53,7 +53,7 @@ const RouteWithSubRoutes = (route: WP.Route) => (
 const App = () => (
   <BrowserRouter>
     <ScrollToTop>
-      <Header routes={routes}/>
+      <Header routes={routes} />
       <div className="nav__container">
         <Switch>
           {routes.map((route, i) => (

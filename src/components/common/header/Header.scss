@@ -1,10 +1,50 @@
-/* Header Stuff */
-.post-nav {
-  margin-top: 20px;
-  width: 100%;
+$hover-transition: background-color 0.2s ease-in-out;
 
+@mixin hover-background($alpha) {
+  background-color: rgba(255,255,255, $alpha);
+}
+
+/* Header Stuff */
+.main-header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+
+  position: fixed;
+  padding: 0.7rem;
+  top: 0;
+  z-index: 100;
+
+  &__link {
+    background-color: transparent;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    outline: none;
+    padding: 0.6rem 0.8rem 0.5rem;
+    margin: 0 0.2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    transition: $hover-transition;
+
+    &:active, &:link, &:visited {
+      color: white;
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include hover-background(0.2);
+      transition: $hover-transition;
+    }
+
+    &--active {
+      @include hover-background(0.1);
+    }
+  }
 }
+

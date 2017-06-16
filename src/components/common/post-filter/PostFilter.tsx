@@ -19,7 +19,6 @@ class PostRangePicker extends React.Component<Props, any> {
       months.push(moment(currentMonth));
       currentMonth.subtract(1, 'month');
     }
-    console.log(months);
     return months.map(month => (
       <li 
         key={month.format('MMMM YYYY')}

@@ -18,6 +18,7 @@ import {Dashboard, Login, PostManager} from './components/admin';
  * exact -> No partial matching for the route (/blog won't match /blog/sub-page)
  * isAdmin -> Will only render in header in admin pages
  * isChild -> Is a nested route of another route component
+ * isHidden -> Does not exist in any navigation
  */
 const routes: WP.Route[] = [
   { path: '/', title: 'RRW | Home', label: 'Home', exact: true, component: Home },
@@ -28,7 +29,7 @@ const routes: WP.Route[] = [
   { path: '/blog', title: 'RRW | Blog', label: 'Blog', component: Blog },
   { path: '/admin/post-manager', title: 'RRW | Post Manager', component: PostManager, isAdmin: true, isChild: true },
   { path: '/admin', title: 'RRW | Admin', label: 'Dashboard',  component: Dashboard, isAdmin: true },
-  { title: 'RRW | 404 Error', component: NoPage }
+  { title: 'RRW | 404 Error', component: NoPage, isHidden: true }
 ];
 
 /**
@@ -53,11 +54,13 @@ const App = () => (
   <BrowserRouter>
     <ScrollToTop>
       <Header routes={routes}/>
-      <Switch>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
+      <div className="nav__container">
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </div>
     </ScrollToTop>
   </BrowserRouter>
 );

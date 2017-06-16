@@ -28,9 +28,10 @@ declare namespace WP {
     label?: string;
     path?: string;
     exact?: boolean;
+    routes?: SimpleRoute[];
+    isHidden?: boolean;
     isAdmin?: boolean;
     isChild?: boolean;
-    routes?: SimpleRoute[];
   }
 
   interface SimpleRoute {

@@ -9,24 +9,31 @@ interface Props extends RouteComponentProps<any> {
 
 class Header extends React.Component<Props, any> {
   renderNavigation = (): any => {
-    console.log(this.props.routes);
+    const { routes, location } = this.props;
+    return routes.filter(route => !(route.isAdmin || route.isChild || route.isHidden))
+      .map((route, i) => {
+        let buttonType = 'btn-secondary';
+        let path = (!route.path || route.path === '/') ? '#' : route.path.substring(1);
+        if (location.pathname.length === 1 && path.length === 1 ) {
+          buttonType = 'btn-outline-primary';
+        } else if (location.pathname.indexOf(path) > -1) {
+          buttonType = 'btn-outline-primary';
+        }
+        return (
+          <Link
+            key={i}
+            className={`btn ${buttonType}`} 
+            to={route.path || '/'}
+          >
+            {route.label}
+          </Link>
+        );
+      });
   }
   render() {
     return (
       <nav className="post-nav">
         {this.renderNavigation()}
-        <Link className="post__new btn btn-link" to="/">
-          Home
-        </Link>
-        <Link className="post__new btn btn-link" to="/blog">
-          Blog
-        </Link>
-        <Link className="post__new btn btn-link" to="/about">
-          About
-        </Link>
-        <Link className="post__new btn btn-link" to="/samples">
-          Samples
-        </Link>
       </nav>
     );
   }

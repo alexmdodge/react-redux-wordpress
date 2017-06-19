@@ -4,8 +4,8 @@ import { fetchPosts } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import './home.css';
 
-import RecentPosts from '../../common/recent-posts/RecentPost';
-import ImageBlock from '../../common/image-block/ImageBlock';
+import { ImageBlock } from '../../common';
+import { PostList } from '../../wordpress';
 
 interface Props extends RouteComponentProps<{}> {
   posts: {[key: string]: WP.Post};
@@ -36,7 +36,7 @@ class PostsIndex extends React.Component<Props, object>  {
         </ImageBlock>
 
         {/* Post List can be used anywhere */}
-        <RecentPosts posts={this.recentPosts(3)} />
+        <PostList posts={this.recentPosts(3)} />
 
         <div className="callout">
           <h1 className="callout__title">

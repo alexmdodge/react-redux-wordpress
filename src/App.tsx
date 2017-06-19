@@ -3,12 +3,12 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /* Public Application Components */
-import { PostList, Post } from './components/wordpress';
-import {Header, ScrollToTop, NoPage} from './components/common';
-import {Home, Blog, About, Samples} from './components/public';
+import { PostContainer } from './containers';
+import { Header, ScrollToTop, NoPage } from './components/common';
+import { Home, Blog, About, Samples } from './components/public';
 
 /* Admin Application Components */
-import {Dashboard, Login, PostManager} from './components/admin';
+import { Dashboard, Login, PostManager } from './components/admin';
 
 /** 
  * Route Configuration
@@ -23,7 +23,7 @@ import {Dashboard, Login, PostManager} from './components/admin';
  */
 const routes: WP.Route[] = [
   { path: '/', title: 'RRW | Home', label: 'Home', exact: true, component: Home },
-  { path: '/blog/:slug', title: 'RRW', component: PostListContainer, isChild: true },
+  { path: '/blog/:slug', title: 'RRW', component: PostContainer, isChild: true },
   { path: '/blog', title: 'RRW | Blog', label: 'Blog', component: Blog },
   { path: '/about', title: 'RRW | About', label: 'About', component: About },
   { path: '/samples', title: 'RRW | Samples', label: 'Samples',  component: Samples },

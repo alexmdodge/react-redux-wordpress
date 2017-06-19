@@ -17,6 +17,7 @@ declare namespace WP {
     };
     tags: Array<number>;
     date: Date;
+    slug: string;
     content: {
       rendered: string;
     };

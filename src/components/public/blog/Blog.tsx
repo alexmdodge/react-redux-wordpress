@@ -4,7 +4,8 @@ import { fetchPosts } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
 
-import { PostFilter, Post, Loading, Breadcrumbs } from '../../common';
+import { Loading, Breadcrumbs } from '../../common';
+import { PostFilter, Post } from '../../wordpress';
 import './blog.css';
 
 export interface Props extends RouteComponentProps<{}> {
@@ -39,7 +40,6 @@ class Blog extends React.Component<Props, object> {
       const post = this.props.posts[key];
       return (
         <Post
-          onSelectPost={() => this.onSelectPost(post.slug)}
           post={post} 
           key={key}
         />

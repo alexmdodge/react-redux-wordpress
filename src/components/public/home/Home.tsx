@@ -2,10 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../../actions';
 import { RouteComponentProps } from 'react-router-dom';
-import { Jumbotron } from 'reactstrap';
 import './home.css';
 
 import RecentPosts from '../../common/recent-posts/RecentPost';
+import ImageBlock from '../../common/image-block/ImageBlock';
 
 interface Props extends RouteComponentProps<{}> {
   posts: {[key: string]: WP.Post};
@@ -26,11 +26,16 @@ class PostsIndex extends React.Component<Props, object>  {
   render() {
     return (
       <div className="home">
-        <Jumbotron className="splash__container">
-          <h1 className="splash__title">
-            &lt; A Blog About <b>Web Development</b> &gt;
+        <ImageBlock
+          className="splash-block"
+          size="medium"
+        >
+          <h1 className="splash-block__title">
+            &lt; A Blog about <b>Web Development</b> &gt;
           </h1>
-        </Jumbotron>
+        </ImageBlock>
+
+        {/* Post List can be used anywhere */}
         <RecentPosts posts={this.recentPosts(3)} />
 
         <div className="callout">

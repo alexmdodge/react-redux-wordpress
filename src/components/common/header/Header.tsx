@@ -37,16 +37,18 @@ class Header extends React.Component<Props, any> {
   }
   render() {
     return (
-      <nav
-        style={{
-          ...this.props.style,
-          backgroundColor: 'rgba(73, 122, 156, 0.9)',
-          borderBottom: '4px solid rgba(73, 122, 156, 1)',
-        }}
-        className={`main-header ${this.props.className}`}
-      >
-        {this.renderNavigation()}
-      </nav>
+      <div className="header-container">
+        <nav
+          style={{
+            ...this.props.style,
+            backgroundColor: 'rgba(73, 122, 156, 1)',
+            borderBottom: '4px solid rgba(63, 112, 146, 1)',
+          }}
+          className={`main-header ${this.props.className}`}
+        >
+          {this.renderNavigation()}
+        </nav>
+      </div>
     );
   }
 }

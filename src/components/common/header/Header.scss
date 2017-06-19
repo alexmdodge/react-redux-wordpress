@@ -4,6 +4,10 @@ $hover-transition: background-color 0.2s ease-in-out;
   background-color: rgba(255,255,255, $alpha);
 }
 
+.header-container {
+  margin-bottom: 4.25rem;
+}
+
 /* Header Stuff */
 .main-header {
   width: 100%;
@@ -11,6 +15,7 @@ $hover-transition: background-color 0.2s ease-in-out;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  height: 4.25rem;
 
   position: fixed;
   padding: 0.7rem;

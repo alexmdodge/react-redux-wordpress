@@ -9,27 +9,27 @@ interface Props {
 }
 
 const PostFull = ({ post }: Props): JSX.Element => (
-  <div className="post-item__container--full">
+  <div className="post__container--full">
     <ImageBlock
-      className="post-item__header"
+      className="post__header"
       size="medium"
     >
-      <h1 className="post-item__title post-item__title--full">
+      <h1 className="post__title post__title--full">
         <SafeHtml content={post.title.rendered} />
       </h1>
-      <div className="post-item__info">
-        <h3 className="post-item__author">
+      <div className="post__info">
+        <h3 className="post__author">
           by Alex Dodge
         </h3>
         <span className="vertical-bar" />
-        <h3 className="post-item__date">
+        <h3 className="post__date">
           {moment(post.date).format('LL')}
         </h3>
       </div>
 
     </ImageBlock>
     <div className="container">
-      <div className="post-item__content post-item__content--full">
+      <div className="post__content post__content--full">
         <SafeHtml content={post.content.rendered} />
       </div>
     </div>

@@ -6,12 +6,12 @@ interface Props {
 }
 
 const PostExcerpt = (props: Props): JSX.Element => (
-  <div className="post-item__container post-item__container--excerpt">
+  <div className="post__container post__container--excerpt">
     <ImageBlock >
-      <h3 className="post-item__title post-item__title--excerpt">
+      <h3 className="post__title post__title--excerpt">
         <SafeHtml content={props.post.title.rendered} />
       </h3>
-      <p className="post-item__content post-item__content--excerpt">
+      <p className="post__content post__content--excerpt">
         <SafeHtml content={props.post.excerpt.rendered} />
       </p>
     </ImageBlock>

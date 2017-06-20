@@ -27,4 +27,4 @@ function mapStateToProps({ posts }: WP.StoreState) {
   return { posts };
 }
 
-export default connect<any, any, Props>(mapStateToProps)(PostListContainer);
+export default connect(mapStateToProps)(PostListContainer) as any;

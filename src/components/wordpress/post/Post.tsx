@@ -26,9 +26,9 @@ class Post extends React.Component<Props, null> {
   
   render() {
     const { layout } = this.props;
-    let layoutClass = layout ? `post-item--${layout}` : 'post-item--excerpt';
+    let layoutClass = layout ? `post--${layout}` : 'post--excerpt';
     return(
-      <div className={`post-item ${layoutClass} ${this.props.className || ''}`}>
+      <div className={`post ${layoutClass} ${this.props.className || ''}`}>
         {this.renderPostLayout()}
         {this.props.children}
       </div>

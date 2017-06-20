@@ -36,6 +36,7 @@ class PostsIndex extends React.Component<Props, object>  {
         </ImageBlock>
 
         {/* Post List can be used anywhere */}
+        <h1 className="home__title"> Recent Posts </h1>
         <PostListContainer 
           range={3}
         />

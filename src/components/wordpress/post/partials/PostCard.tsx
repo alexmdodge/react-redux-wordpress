@@ -7,21 +7,21 @@ interface Props {
 }
 
 const PostCard = ({ post }: Props): JSX.Element => (
-  <div className="post-item__container post-item__container--card">
+  <div className="post__container post__container--card">
     <ImageBlock 
       height="200px"
     />
-    <div className="post-item__card-block">
-      <h3 className="post-item__title">
+    <div className="post__card-block">
+      <h3 className="post__title">
         <SafeHtml content={post.title.rendered} />
       </h3>
-      <p className="post-item__content post-item__content--card">
+      <p className="post__content post__content--card">
         <SafeHtml content={post.excerpt.rendered} />
       </p>
     </div>
     <Link 
       to={`/blog/${post.slug}`}
-      className="post-item__card-button btn btn-secondary"
+      className="post__card-button btn btn-secondary"
     >
       View Post
     </Link>

@@ -28,11 +28,7 @@ class PostContainer extends React.Component<Props, object> {
     return (
       <div>
         <Post
-          layout="card"
-          post={post}
-        />
-        <Post
-          layout="card"
+          layout="full"
           post={post}
         />
       </div>

@@ -14,7 +14,7 @@ const PostFull = ({ post }: Props): JSX.Element => (
       className="post-item__header"
       size="medium"
     >
-      <h1 className="post-item__title">
+      <h1 className="post-item__title post-item__title--full">
         <SafeHtml content={post.title.rendered} />
       </h1>
       <div className="post-item__info">
@@ -29,7 +29,7 @@ const PostFull = ({ post }: Props): JSX.Element => (
 
     </ImageBlock>
     <div className="container">
-      <div className="post-item__content">
+      <div className="post-item__content post-item__content--full">
         <SafeHtml content={post.content.rendered} />
       </div>
     </div>

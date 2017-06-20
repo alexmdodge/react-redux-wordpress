@@ -13,6 +13,7 @@ interface Props {
   post: WP.Post;
   children?: object;
   layout?: string;
+  className?: string;
 }
 
 class Post extends React.Component<Props, null> {
@@ -34,7 +35,7 @@ class Post extends React.Component<Props, null> {
     const { layout } = this.props;
     let layoutClass = layout ? `post-item--${layout}` : 'post-item--excerpt';
     return(
-      <div className={`post-item ${layoutClass}`}>
+      <div className={`post-item ${layoutClass} ${this.props.className || ''}`}>
         {this.renderPostLayout()}
         {this.props.children}
       </div>

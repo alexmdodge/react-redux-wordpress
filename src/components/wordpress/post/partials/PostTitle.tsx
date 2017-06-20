@@ -9,7 +9,7 @@ interface Props {
 const PostTitle = (props: Props): JSX.Element => (
   <div className="post-item__container">
     <Link to={`/blog/${props.post.slug}`} >
-      <h3 className="posts-item__title">
+      <h3 className="post-item__title post-item__title--title">
         <SafeHtml content={props.post.title.rendered} />
       </h3>
     </Link>

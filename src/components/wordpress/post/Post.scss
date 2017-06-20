@@ -4,10 +4,22 @@
 
     &--full {
       font-weight: bold;
+      text-align: center;
     }
 
     &--card {
       font-weight: lighter;
+    }
+
+    &--excerpt {
+      padding: 1rem 1rem 0;
+    }
+
+    &--title {
+      color: #333;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 2.5rem;
     }
   }
 
@@ -31,6 +43,10 @@
 
     &--full {
       margin: 3rem auto;
+    }
+
+    &--excerpt {
+      padding: 0 1rem;
     }
   }
 
@@ -61,6 +77,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 1rem;
+    margin-bottom: 1rem;
   }
 
   &__container {
@@ -68,8 +85,10 @@
       display: inline-block;
       font-size: 21px;
       position: relative;
-      height: 600px;
-      width: 350px;
+    }
+
+    &--excerpt {
+      cursor: pointer;
     }
 
     &--card, &--excerpt, &--title {

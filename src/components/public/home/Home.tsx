@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import './home.css';
 
 import { ImageBlock } from '../../common';
-import { PostList } from '../../wordpress';
+import { PostListContainer } from '../../../containers';
 
 interface Props extends RouteComponentProps<{}> {
   posts: {[key: string]: WP.Post};
@@ -36,7 +36,9 @@ class PostsIndex extends React.Component<Props, object>  {
         </ImageBlock>
 
         {/* Post List can be used anywhere */}
-        <PostList posts={this.recentPosts(3)} />
+        <PostListContainer 
+          range={3}
+        />
 
         <div className="callout">
           <h1 className="callout__title">

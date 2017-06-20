@@ -2,17 +2,10 @@ import * as React from 'react';
 import { PostFull, PostExcerpt, PostCard, PostTitle } from './partials';
 import './Post.css';
 
-const LAYOUTS = {
-  FULL: 'full',
-  CARD: 'card',
-  EXCERPT: 'excerpt',
-  TITLE: 'title',
-};
-
 interface Props {
   post: WP.Post;
   children?: object;
-  layout?: string;
+  layout?: 'full' | 'card' | 'excerpt' | 'title';
   className?: string;
 }
 
@@ -20,11 +13,11 @@ class Post extends React.Component<Props, null> {
   renderPostLayout() {
     let layout = this.props.layout || 'excerpt';
     switch (layout.toLowerCase()) {
-      case LAYOUTS.FULL:
+      case 'full':
         return <PostFull post={this.props.post} />;
-      case LAYOUTS.CARD:
+      case 'card':
         return <PostCard post={this.props.post} />;
-      case LAYOUTS.TITLE:
+      case 'title':
         return <PostTitle post={this.props.post} />;
       default:
         return <PostExcerpt post={this.props.post} />;

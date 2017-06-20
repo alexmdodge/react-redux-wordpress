@@ -1,7 +1,12 @@
 import * as React from 'react';
 import './PostList.css';
 
-export default class PostList extends React.Component<any, any> {
+interface Props {
+  posts: WP.Post[];
+  range?: number;
+}
+
+export default class PostList extends React.Component<Props, any> {
   render() {
     return (
       <div className="jumbotron">

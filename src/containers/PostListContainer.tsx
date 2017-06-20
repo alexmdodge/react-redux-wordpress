@@ -1,27 +1,30 @@
+/* Vendor Imports */
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
 
-interface Props extends RouteComponentProps<any> {
+/* Local Components */
+import { PostList } from '../components/wordpress';
 
+interface Props {
+  posts: WP.Post[];
+  range?: number;
+  layout?: string;
 }
 
-interface State {
-
-}
-
-class PostListContainer extends React.Component<Props, State> {
+class PostListContainer extends React.Component<Props, any> {
   render() {
+    const { posts, range } = this.props;
     return (
-      <div> Post List Container </div>
+      <PostList 
+        posts={posts}
+        range={range}
+      />
     );
   }
 }
 
-function mapStateToProps(state: WP.StoreState) {
-  return {
-    state
-  };
+function mapStateToProps({ posts }: WP.StoreState) {
+  return { posts };
 }
 
-export default connect(mapStateToProps)(PostListContainer);
+export default connect<any, any, Props>(mapStateToProps)(PostListContainer);

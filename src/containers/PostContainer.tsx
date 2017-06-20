@@ -26,10 +26,16 @@ class PostContainer extends React.Component<Props, object> {
     if ( !post ) { return <Loading />; }
     console.log(post);
     return (
-      <Post
-        layout="full"
-        post={post}
-      />
+      <div>
+        <Post
+          layout="card"
+          post={post}
+        />
+        <Post
+          layout="card"
+          post={post}
+        />
+      </div>
     );
   }
 }

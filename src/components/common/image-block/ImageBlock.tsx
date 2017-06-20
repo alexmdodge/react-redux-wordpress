@@ -24,6 +24,8 @@ interface Props {
   isFixed?: boolean;
   isStretched?: boolean;
   isDefault?: boolean;
+  height?: string;
+  width?: string;
 }
 
 interface State {
@@ -48,8 +50,16 @@ class ImageBlock extends React.Component<Props, State> {
     };
   }
   
+  /**
+   * Sets properties of the element as conditionally
+   * rendering with a function would prove more verbose
+   * 
+   * Favors specific width and height of the element.
+   */
   componentWillMount() {
-    let test = this.props.size || 'fit';
+    const { size, isSingle, isFixed, isStretched, 
+            image, height, width } = this.props;
+    let test = size || 'fit';
     switch (test.toLowerCase()) {
       case SIZES.LARGE:
         this.setState({ height: '90vh' });
@@ -67,12 +77,17 @@ class ImageBlock extends React.Component<Props, State> {
         this.setState({ height: '100%' });
     }
 
+    /* Set guaranteed element defaults */
     this.setState({
-      repeat: this.props.isSingle ? 'no-repeat' : 'repeat',
-      attachment: this.props.isFixed ? 'fixed' : 'scroll',
-      size: this.props.isStretched ? 'cover' : 'auto',
-      image: this.props.image ? this.props.image : DEFAULTS.xo,
+      repeat: isSingle ? 'no-repeat' : 'repeat',
+      attachment: isFixed ? 'fixed' : 'scroll',
+      size: isStretched ? 'cover' : 'auto',
+      image: image ? image : DEFAULTS.xo,
     });
+
+    /* Set conditional height and width with priority for size */
+    if (height) { this.setState({ height: height }); }
+    if (width) { this.setState({ width: width }); }
   }
 
   render() {

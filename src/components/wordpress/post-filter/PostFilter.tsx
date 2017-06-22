@@ -46,7 +46,7 @@ class PostRangePicker extends React.Component<Props, any> {
 }
 
 function mapStateToProps({ ui }: WP.StoreState): object {
-  return { validMonths: ui.postsFilter.validMonths };
+  return { validMonths: ui.postFilters.validMonths };
 }
 
 export default connect<any, any, Props>(mapStateToProps, { updatePostRange })(PostRangePicker);

@@ -2,10 +2,12 @@ import * as React from 'react';
 import { PostFull, PostExcerpt, PostCard, PostTitle } from './partials';
 import './Post.css';
 
+export type Layout = 'full' | 'card' | 'excerpt' | 'title';
+
 interface Props {
   post: WP.Post;
   children?: object;
-  layout?: 'full' | 'card' | 'excerpt' | 'title';
+  layout?: Layout;
   className?: string;
 }
 

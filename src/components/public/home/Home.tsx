@@ -1,28 +1,10 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { fetchPosts } from '../../../actions';
-import { RouteComponentProps } from 'react-router-dom';
 import './home.css';
 
 import { ImageBlock } from '../../common';
 import { PostListContainer } from '../../../containers';
 
-interface Props extends RouteComponentProps<{}> {
-  posts: {[key: string]: WP.Post};
-  fetchPosts(): void;
-}
-
-class PostsIndex extends React.Component<Props, object>  {
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
-
-  recentPosts = (count: number): WP.Post[] => {
-    return Object.keys(this.props.posts)
-      .map((key) => this.props.posts[key])
-      .slice(0, count);
-  }
-
+class Home extends React.Component<null, null>  {
   render() {
     return (
       <div className="home">
@@ -38,6 +20,7 @@ class PostsIndex extends React.Component<Props, object>  {
         {/* Post List can be used anywhere */}
         <h1 className="home__title"> Recent Posts </h1>
         <PostListContainer 
+          layout="card"
           range={3}
         />
 
@@ -67,8 +50,4 @@ class PostsIndex extends React.Component<Props, object>  {
   }
 }
 
-function mapStateToProps({ posts }: WP.StoreState) {
-  return { posts };
-}
-
-export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
+export default Home;

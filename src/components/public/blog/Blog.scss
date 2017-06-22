@@ -1,20 +1,35 @@
 @import 'styles/variables';
 
 .blog {
-  margin-top: 30px;
-}
+  padding: 2rem;
 
-.blog__title {
-  font-weight: lighter;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
+  &__title {
+    font-weight: lighter;
+    text-transform: uppercase;
+    padding: 1rem;
+    margin: 1rem auto 0;
+  }
 
-.blog__navigation-title {
-  font-weight: lighter;
-  text-transform: uppercase;
-}
+  hr {
+    margin: 0.5rem 0;
+  }
 
-.blog hr {
-  margin: 10px 0;
+  &__posts {
+    padding: 0 1rem;
+  }
+
+  &__filter-container {
+    margin-top: 1rem;
+  }
+
+  &__filter {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+
+  &__filter-title {
+    text-transform: uppercase;
+    font-weight: lighter;
+  }
 }

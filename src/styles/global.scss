@@ -8,6 +8,10 @@
   font-family: sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1, h3 {
   font-weight: lighter;
 }
@@ -23,4 +27,15 @@ h1, h3 {
 .nav__container {
   width: 100%;
   margin-top: 0rem;
+}
+
+.block-link {
+  color: #333;
+  text-decoration: none;
+  outline: none;
+  &:hover, &:active, &:focus, &:visited {
+    color: #333;
+    text-decoration: none;
+    outline: none;
+  }
 }

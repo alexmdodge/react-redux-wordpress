@@ -1,14 +1,24 @@
 /* Post List Styles */
 .post-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   margin: 1rem auto;
 
   &__item {
-    flex: 1;
-    display: inline-block;
-    margin: 1rem;
-    width: 30%;
+    &--card {
+      flex: 1;
+      display: inline-block;
+      margin: 1rem;
+    }
+  }
+
+  &--excerpt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &--card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }

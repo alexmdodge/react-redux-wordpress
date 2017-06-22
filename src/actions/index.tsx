@@ -18,20 +18,16 @@ export function fetchPosts() {
 }
 
 export function fetchRecentPosts(count: number): Actions.DispatchFetchRecentPost {
-  const request = axios.get(`${Constants.ROOT_URL}/posts?per_page=${count}`);
-
   return {
     type: Actions.FETCH_RECENT_POSTS,
-    payload: request, 
+    payload: axios.get(`${Constants.ROOT_URL}/posts?per_page=${count}`), 
   };
 }
 
 export function fetchPost(slug: string): Actions.DispatchFetchPost {
-  const request = axios.get(`${Constants.ROOT_URL}/posts?slug=${slug}`);
-
   return {
     type: Actions.FETCH_POST,
-    payload: request,
+    payload: axios.get(`${Constants.ROOT_URL}/posts?slug=${slug}`),
   };
 }
 
@@ -46,5 +42,12 @@ export function updateValidMonths(date: number): Actions.DispatchUpdateValidMont
   return {
     type: Actions.UPDATE_VALID_MONTHS,
     payload: date,
+  };
+}
+
+export function fetchMedia(): any {
+  return {
+    type: Actions.FETCH_MEDIA,
+    payload: axios.get(`${Constants.ROOT_URL}/media`),
   };
 }

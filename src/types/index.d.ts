@@ -12,9 +12,7 @@ declare namespace WP {
     excerpt: {
       rendered: string;
     };
-    better_featured_image: {
-      source_url: string;
-    };
+    featured_media: number;
     tags: Array<number>;
     date: Date;
     slug: string;

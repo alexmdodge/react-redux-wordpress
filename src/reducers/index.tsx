@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import PostsReducer from './PostsReducer';
-import PostFilterReducer from './PostsFilterReducer';
+import MediaReducer from './MediaReducer';
+import PostFiltersReducer from './PostFiltersReducer';
 
 const rootReducer = combineReducers({
   posts: PostsReducer,
+  media: MediaReducer,
   ui: combineReducers({
-    postsFilter: PostFilterReducer,
+    postFilters: PostFiltersReducer,
   }),
 });
 

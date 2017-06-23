@@ -12,7 +12,7 @@ import { Post } from '../components/wordpress';
 
 interface Props extends RouteComponentProps<any> {
   post: WP.Post;
-  media: any;
+  images: WP.ImageList;
   fetchPost(slug: string): void;
   fetchMedia(): void;
 }
@@ -25,24 +25,31 @@ class PostContainer extends React.Component<Props, object> {
   }
 
   render() {
-    const { post, media } = this.props;
-    if ( !(post && media) ) { return <Loading />; }
-    console.log(post.featured_media, media[post.featured_media]);
+    const { post, images } = this.props;
+    if ( !(post && images) ) { return <Loading />; }
+    console.log(post, images);
     return (
       <div>
         <Post
           layout="full"
           post={post}
+          images={images}
         />
       </div>
     );
   }
 }
 
-function mapStateToProps({ posts, media }: WP.StoreState, ownProps: Props) {
+function mapStateToProps(state: WP.StoreState, ownProps: Props) {
+  const { posts = false, media = false} = state;
   const post = posts[ownProps.match.params.slug];
-  // const images = media[post.featured_media].media_details.sizes;
-  return { post, media };
+  let images = {};
+
+  if (post && media[post.featured_media]) {
+    images = media[post.featured_media].media_details.sizes;
+  }
+
+  return { post, images };
 }
 
 export default connect(mapStateToProps, { fetchPost, fetchMedia })(PostContainer);

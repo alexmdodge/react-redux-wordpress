@@ -6,6 +6,7 @@ export type Layout = 'full' | 'card' | 'excerpt' | 'title';
 
 interface Props {
   post: WP.Post;
+  images?: WP.ImageList;
   children?: object;
   layout?: Layout;
   className?: string;

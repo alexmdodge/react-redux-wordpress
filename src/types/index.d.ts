@@ -1,8 +1,16 @@
 declare namespace WP {
   interface StoreState {
-    posts: object;
-    media: object;
+    posts: PostsState;
+    media: MediaState;
     ui: any;
+  }
+
+  interface MediaState {
+    [key: string]: MediaItem;
+  }
+
+  interface PostsState {
+    [key: string]: Post;
   }
 
   interface Post {
@@ -19,6 +27,29 @@ declare namespace WP {
     content: {
       rendered: string;
     };
+  }
+
+  interface MediaItem {
+    author: number;
+    date: string;
+    id: number;
+    slug: string;
+    source_url: string;
+    media_details: {
+      file: string;
+      height: number;
+      width: number;
+      sizes: ImageList;
+    };
+  }
+
+  interface ImageList {
+    [key: string]: {
+      file: string;
+      height: number;
+      width: number;
+      source_url: string;
+    }
   }
 
   interface Route {

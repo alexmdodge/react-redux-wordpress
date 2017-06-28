@@ -2,26 +2,30 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
+/* Actions and Utilities */
+import { getRequestToken } from '../actions';
+
+/* Local Imports */
+import { Login } from '../components/admin';
+
 interface Props extends RouteComponentProps<any> {
-
+  getRequestToken(): void;
 }
 
-interface State {
-
-}
-
-class LoginContainer extends React.Component<Props, State> {
+class LoginContainer extends React.Component<Props, object> {
+  componentDidMount() {
+    this.props.getRequestToken();
+  }
+  
   render() {
     return (
-      <div> Login Login Container </div>
+      <Login />
     );
   }
 }
 
-function mapStateToProps(state: WP.StoreState) {
-  return {
-    state
-  };
+function mapStateToProps({ auth }: WP.StoreState) {
+  return { auth };
 }
 
-export default connect(mapStateToProps)(LoginContainer);
+export default connect(mapStateToProps, { getRequestToken })(LoginContainer);

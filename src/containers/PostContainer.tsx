@@ -27,7 +27,9 @@ class PostContainer extends React.Component<Props, object> {
 
   render() {
     const { post, images } = this.props;
-    if ( stateGroupIsLoading(post, images) ) { return <Loading />; }
+    if ( stateGroupIsLoading(post, images) ) { 
+      return <Loading />; 
+    }
 
     return (
       <div>

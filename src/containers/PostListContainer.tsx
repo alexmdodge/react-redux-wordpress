@@ -2,28 +2,35 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+/* Actions and Utilities */
+import { fetchPosts, fetchMedia } from '../actions';
+import { stateGroupIsLoading } from '../reducers/utilities';
+
 /* Local Imports */
 import { PostList, Layout } from '../components/wordpress';
 import { Loading } from '../components/common';
-import { fetchPosts } from '../actions';
 
 interface Props {
   posts: WP.PostsState;
+  media: WP.MediaState;
   range?: number;
   layout?: Layout;
-  media?: WP.MediaState;
   fetchPosts(): void;
+  fetchMedia(): void;
 }
 
 class PostListContainer extends React.Component<Props, any> {
   componentDidMount() {
     // fetch posts here
     this.props.fetchPosts();
+    this.props.fetchMedia();
   }
   
   render() {
     const { posts, range, media, layout } = this.props;
-    if (!posts || !media ) { return <Loading />; }
+    if ( stateGroupIsLoading(posts, media) ) { 
+      return <Loading />; 
+    }
 
     return (
       <PostList 
@@ -40,4 +47,4 @@ function mapStateToProps({posts, media}: WP.StoreState, ownProps: Props) {
   return { posts, media };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(PostListContainer) as any;
+export default connect(mapStateToProps, { fetchPosts, fetchMedia })(PostListContainer) as any;

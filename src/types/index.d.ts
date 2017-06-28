@@ -3,10 +3,15 @@ declare namespace WP {
     posts: PostsState;
     media: MediaState;
     ui: any;
+    auth: AuthState;
   }
 
   interface MediaState {
     [key: string]: MediaItem;
+  }
+
+  interface AuthState {
+    isLoggedIn: boolean;
   }
 
   interface PostsState {

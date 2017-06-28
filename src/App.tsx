@@ -3,12 +3,12 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /* Public Application Components */
-import { PostContainer } from './containers';
+import { PostContainer, LoginContainer } from './containers';
 import { Header, ScrollToTop, NoPage } from './components/common';
 import { Home, Blog, About, Samples } from './components/public';
 
 /* Admin Application Components */
-import { Dashboard, Login, PostManager } from './components/admin';
+import { Dashboard, PostManager } from './components/admin';
 
 /** 
  * Route Configuration
@@ -27,7 +27,7 @@ const routes: WP.Route[] = [
   { path: '/blog', title: 'RRW | Blog', label: 'Blog', component: Blog },
   { path: '/about', title: 'RRW | About', label: 'About', component: About },
   { path: '/samples', title: 'RRW | Samples', label: 'Samples',  component: Samples },
-  { path: '/login', title: 'RRW | Login', label: 'Login',  component: Login, isAdmin: true },
+  { path: '/login', title: 'RRW | Login', label: 'Login',  component: LoginContainer, isAdmin: true },
   { path: '/admin/post-manager', title: 'RRW | Post Manager', component: PostManager, isAdmin: true, isChild: true },
   { path: '/admin', title: 'RRW | Admin', label: 'Dashboard',  component: Dashboard, isAdmin: true },
   { title: 'RRW | 404 Error', component: NoPage, isHidden: true }

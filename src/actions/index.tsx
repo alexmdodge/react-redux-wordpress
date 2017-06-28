@@ -3,7 +3,7 @@ import * as Actions from '../constants';
 import * as Constants from '../constants';
 
 export function fetchPosts() {
-  const request = axios.get(`${Constants.ROOT_URL}/posts`);
+  const request = axios.get(`${Constants.REST_URL}/posts`);
 
   return (dispatch: any) => {
     return request.then(response => {
@@ -20,14 +20,14 @@ export function fetchPosts() {
 export function fetchRecentPosts(count: number): Actions.DispatchFetchRecentPost {
   return {
     type: Actions.FETCH_RECENT_POSTS,
-    payload: axios.get(`${Constants.ROOT_URL}/posts?per_page=${count}`), 
+    payload: axios.get(`${Constants.REST_URL}/posts?per_page=${count}`), 
   };
 }
 
 export function fetchPost(slug: string): Actions.DispatchFetchPost {
   return {
     type: Actions.FETCH_POST,
-    payload: axios.get(`${Constants.ROOT_URL}/posts?slug=${slug}`),
+    payload: axios.get(`${Constants.REST_URL}/posts?slug=${slug}`),
   };
 }
 
@@ -48,6 +48,18 @@ export function updateValidMonths(date: number): Actions.DispatchUpdateValidMont
 export function fetchMedia(): any {
   return {
     type: Actions.FETCH_MEDIA,
-    payload: axios.get(`${Constants.ROOT_URL}/media`),
+    payload: axios.get(`${Constants.REST_URL}/media`),
+  };
+}
+
+export function getRequestToken(): any {
+
+  return {
+    type: Actions.GET_REQUEST_TOKEN,
+    payload: axios.request({
+      url: 'oauth/request',
+      baseURL: Constants.BASE_URL,
+      method: 'post',
+    }),
   };
 }

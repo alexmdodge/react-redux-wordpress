@@ -37,7 +37,10 @@ class Post extends React.Component<Props, null> {
         );
       default:
         return (
-          <PostExcerpt post={post} />
+          <PostExcerpt 
+            post={post}
+            image={images && images.medium.source_url}
+          />
         );
     }
   }

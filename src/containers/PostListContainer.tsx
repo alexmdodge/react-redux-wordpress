@@ -8,9 +8,10 @@ import { Loading } from '../components/common';
 import { fetchPosts } from '../actions';
 
 interface Props {
-  posts: WP.Post[];
+  posts: WP.PostsState;
   range?: number;
   layout?: Layout;
+  media?: WP.MediaState;
   fetchPosts(): void;
 }
 
@@ -21,12 +22,13 @@ class PostListContainer extends React.Component<Props, any> {
   }
   
   render() {
-    const { posts, range, layout } = this.props;
-    if (!posts) { return <Loading />; }
+    const { posts, range, media, layout } = this.props;
+    if (!posts || !media ) { return <Loading />; }
 
     return (
       <PostList 
         posts={posts}
+        media={media}
         range={range}
         layout={layout}
       />
@@ -34,8 +36,8 @@ class PostListContainer extends React.Component<Props, any> {
   }
 }
 
-function mapStateToProps({ posts }: WP.StoreState) {
-  return { posts };
+function mapStateToProps({posts, media}: WP.StoreState, ownProps: Props) {
+  return { posts, media };
 }
 
 export default connect(mapStateToProps, { fetchPosts })(PostListContainer) as any;

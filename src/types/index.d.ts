@@ -39,18 +39,20 @@ declare namespace WP {
       file: string;
       height: number;
       width: number;
-      sizes: ImageList;
+      sizes: ImageMap;
     };
   }
 
-  interface ImageList {
-    [key: string]: {
+  type ImageMap = {
+    [key in ImageSizes]: {
       file: string;
       height: number;
       width: number;
       source_url: string;
     }
   }
+
+  type ImageSizes = 'thumbnail' | 'medium' | 'large' | 'full';
 
   interface Route {
     title?: string;

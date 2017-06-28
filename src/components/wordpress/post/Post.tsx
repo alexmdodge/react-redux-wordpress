@@ -6,7 +6,7 @@ export type Layout = 'full' | 'card' | 'excerpt' | 'title';
 
 interface Props {
   post: WP.Post;
-  images?: WP.ImageList;
+  images?: WP.ImageMap;
   children?: object;
   layout?: Layout;
   className?: string;
@@ -14,16 +14,31 @@ interface Props {
 
 class Post extends React.Component<Props, null> {
   renderPostLayout() {
-    let layout = this.props.layout || 'excerpt';
+    const { post, images, layout = 'excerpt'} = this.props;
+
     switch (layout.toLowerCase()) {
       case 'full':
-        return <PostFull post={this.props.post} />;
+        return (
+          <PostFull
+            post={post}
+            image={images && images.large.source_url}
+          />
+        );
       case 'card':
-        return <PostCard post={this.props.post} />;
+        return (
+          <PostCard 
+            post={post}
+            image={images && images.medium.source_url}
+          />
+        );
       case 'title':
-        return <PostTitle post={this.props.post} />;
+        return (
+          <PostTitle post={post} />
+        );
       default:
-        return <PostExcerpt post={this.props.post} />;
+        return (
+          <PostExcerpt post={post} />
+        );
     }
   }
   

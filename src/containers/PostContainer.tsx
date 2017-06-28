@@ -3,8 +3,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
-/* Actions */
+/* Actions and Utilities */
 import { fetchPost, fetchMedia } from '../actions';
+import { stateGroupIsLoading } from '../reducers/utilities';
 
 /* Local Components */
 import { Loading } from '../components/common';
@@ -12,7 +13,7 @@ import { Post } from '../components/wordpress';
 
 interface Props extends RouteComponentProps<any> {
   post: WP.Post;
-  images: WP.ImageList;
+  images: WP.ImageMap;
   fetchPost(slug: string): void;
   fetchMedia(): void;
 }
@@ -26,8 +27,8 @@ class PostContainer extends React.Component<Props, object> {
 
   render() {
     const { post, images } = this.props;
-    if ( !(post && images) ) { return <Loading />; }
-    console.log(post, images);
+    if ( stateGroupIsLoading(post, images) ) { return <Loading />; }
+
     return (
       <div>
         <Post

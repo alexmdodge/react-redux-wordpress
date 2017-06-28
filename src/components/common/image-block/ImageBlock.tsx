@@ -24,6 +24,7 @@ interface Props {
   isFixed?: boolean;
   isStretched?: boolean;
   isDefault?: boolean;
+  opacity?: number;
   height?: string;
   width?: string;
 }
@@ -32,6 +33,7 @@ interface State {
   image: string;
   height: string;
   width: string;
+  opacity: number;
   repeat: string;
   attachment: 'fixed' | 'scroll';
   size: string;
@@ -44,6 +46,7 @@ class ImageBlock extends React.Component<Props, State> {
       image: DEFAULTS.xo,
       height: '100%',
       width: '100%',
+      opacity: 0,
       repeat: 'no-repeat',
       attachment: 'scroll',
       size: 'auto',
@@ -58,7 +61,7 @@ class ImageBlock extends React.Component<Props, State> {
    */
   componentWillMount() {
     const { size, isSingle, isFixed, isStretched, 
-            image, height, width } = this.props;
+            image, opacity, height, width } = this.props;
     let test = size || 'fit';
     switch (test.toLowerCase()) {
       case SIZES.LARGE:
@@ -83,6 +86,7 @@ class ImageBlock extends React.Component<Props, State> {
       attachment: isFixed ? 'fixed' : 'scroll',
       size: isStretched ? 'cover' : 'auto',
       image: image ? image : DEFAULTS.xo,
+      opacity: opacity ? opacity : 0,
     });
 
     /* Set conditional height and width with priority for size */
@@ -99,12 +103,33 @@ class ImageBlock extends React.Component<Props, State> {
           backgroundAttachment: this.state.attachment,
           backgroundRepeat: this.state.repeat,
           backgroundSize: this.state.size,
+          position: 'relative',
           width: this.state.width,
           height: this.state.height,
         }}
         className={`image-block ${this.props.className || ''}`}
       >
-        {this.props.children}
+        <div 
+          style={{
+            backgroundColor: '#fff',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: this.state.width,
+            height: this.state.height,
+            opacity: this.state.opacity,
+          }}
+          className="image-block--overlay" 
+        />
+        <div 
+          style={{
+            position: 'relative',
+            zIndex: 10,
+          }}
+          className="image-block__content" 
+        >
+          {this.props.children}
+        </div>
       </div>
     );
   }

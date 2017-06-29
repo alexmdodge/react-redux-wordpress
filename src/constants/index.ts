@@ -55,3 +55,6 @@ export interface DispatchUpdateValidMonths {
 // API URL Options
 export const REST_URL = 'https://api.alexdodge.ca/wp-json/wp/v2';
 export const BASE_URL = 'https://api2.alexdodge.ca';
+
+export const CLIENT_KEY = 'b7n0uLOpFSZf';
+export const CLIENT_SECRET = 'w2ymKx0gDWEtaiEvCl5hAtNvHPtkuAa8GaT8cKGmD1ilpwij';
